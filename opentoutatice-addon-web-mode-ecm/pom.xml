@@ -3,17 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>opentoutatice-ecm.platform</groupId>
-		<artifactId>opentoutatice-ecm-platform-parent</artifactId>
+		<groupId>opentoutatice-ecm.web-mode</groupId>
+		<artifactId>opentoutatice-web-mode-parent</artifactId>
 		<version>3.2.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>opentoutatice-ecm-platform-web-mode</artifactId>
+	<artifactId>opentoutatice-web-mode-ecm</artifactId>
 	<packaging>jar</packaging>
-	<name>opentoutatice-ecm-platform-web-mode</name>
+	<name>opentoutatice-web-mode-ecm</name>
 	<description>
 	    Allows web mode in Osivia Portal
-	  </description>
+	</description>
 
 
 	<dependencies>
@@ -21,12 +21,9 @@
 		<dependency>
 			<groupId>opentoutatice-ecm.platform</groupId>
 			<artifactId>opentoutatice-ecm-platform-web</artifactId>
+			<version>${ottc.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>opentoutatice-ecm.platform</groupId>
-			<artifactId>opentoutatice-ecm-platform-services</artifactId>
-		</dependency>
-		
+	
 	</dependencies>
 	
 	<profiles>
