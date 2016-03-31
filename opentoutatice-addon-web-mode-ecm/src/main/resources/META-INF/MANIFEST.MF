@@ -3,7 +3,10 @@ Bundle-Vendor: Nuxeo
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Bundle-Version: 1.0
-Bundle-Name: fr.toutatice.ecm.platform.web.mode
+Bundle-ManifestVersion: 1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Name: Opentoutatice Web Mode
+Bundle-SymbolicName: fr.toutatice.ecm.platform.web.mode;singleton:=true
 Nuxeo-Component: OSGI-INF/extensions/webpage/layouts-contrib.xml,
  OSGI-INF/extensions/webpage/core-types-contrib.xml,
  OSGI-INF/extensions/webpage/metadata-layouts-contrib.xml,
@@ -24,7 +27,5 @@ Nuxeo-Component: OSGI-INF/extensions/webpage/layouts-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-lifecycle-contrib.xml, 
  OSGI-INF/extensions/medialibrary/toutatice-filters-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-ui-types-contrib.xml, 
-Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.osivia.opentoutatice.web.mode
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+
 
