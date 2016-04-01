@@ -56,6 +56,9 @@
 					<widget>toutatice_showInMenu_widget</widget>
 				</row>
 				<row>
+					<widget>ottc_selectors</widget>
+				</row>				
+				<row>
 					<widget>ottc_weburl</widget>
 				</row> 
 				<row>
@@ -89,6 +92,27 @@
                 <property name="validator">#{toutaticeValidator.validateWebId}
                 </property>
             </properties>
+		</widget>
+		
+		<widget name="ottc_selectors" type="textarea">
+			<labels>
+				<label mode="any">webmode.label.selectors</label>
+			</labels>
+			<helpLabels>
+				<label mode="any">>webmode.label.selectors.help</label>
+			</helpLabels>			
+			<translated>true</translated>
+			<fields>
+				<field>ttc:selectors</field>
+			</fields>
+			<widgetModes>
+				<mode value="any">#{nxu:test(config.getWebsiteParam("enableSelectors"), layout.mode,
+					'hidden')}
+				</mode>
+			</widgetModes>	
+			<properties widgetMode="edit">
+				<property name="styleClass">dataInputText</property>
+			</properties>			
 		</widget>
 		
 		<widget name="web_flow" type="layout">
