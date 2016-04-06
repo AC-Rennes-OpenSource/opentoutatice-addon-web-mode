@@ -8,21 +8,21 @@
 
     <c:if test="#{widget.mode == 'edit'}">
 
-		<div class="controls form-inline">
- 			#{webModeDocumentActionsBean.getCurrentUrl()} <h:inputText id="#{widget.id}_weburl" value="#{field_0}"
-							required="false" style="display:inline; width:auto;"
-							validator="#{webModeValidator.validateSegment}" validatorMessage="#{messages['webmode.label.weburl.validator']}"/>
-			
-		</div>
-		<h:message styleClass="errorMessage" for="#{widget.id}_weburl"></h:message>
+        <div class="controls form-inline">
+            #{webModeDocumentActionsBean.portalWebPath} <h:inputText id="#{widget.id}_weburl" value="#{field_0}"
+                            required="false" style="display:inline; width:auto;"
+                            validator="#{webModeValidator.validateSegment}" validatorMessage="#{messages['webmode.label.weburl.validator']}"/>
+            
+        </div>
+        <h:message styleClass="errorMessage" for="#{widget.id}_weburl"></h:message>
     </c:if>
     
-	<br />
+    <br />
 
-	<p class="alert alert-info">
-		<i class="glyphicons halflings info-sign"></i> <span
-			class="text-info">#{messages['webmode.label.weburl.help']}</span>
+    <p class="alert alert-info">
+        <i class="glyphicons halflings info-sign"></i> <span
+            class="text-info">#{messages['webmode.label.weburl.help']}</span>
 
-	</p>
+    </p>
 
 </f:subview>

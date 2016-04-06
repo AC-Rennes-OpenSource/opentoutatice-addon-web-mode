@@ -12,6 +12,7 @@ import org.jboss.seam.annotations.Install;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Observer;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.web.RequestParameter;
 import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
@@ -45,6 +46,9 @@ public class WebModeDocumentActionsBean implements Serializable {
 	@In(create = true)
 	protected ToutaticeDocumentActionsBean documentActions;
 	
+	@RequestParameter("portalWebPath")
+    private String portalWebPath;
+	
 	/**
 	 * Default behavior: all Folderish are shown in menu.
 	 * @throws ClientException
@@ -60,45 +64,17 @@ public class WebModeDocumentActionsBean implements Serializable {
 	}
 	
 	/**
-	 * Generate the full portal url of the document
-	 * @return
-	 */
-	public String getCurrentUrl() {
-		
-		
-		PermaLinkService permalink = Framework.getService(PermaLinkService.class);
-		String url = permalink.getPortalHost();
-		
-		if(!url.endsWith("/")) {
-			url = url.concat("/");
-		}
-		
-		url = url.concat("web/");
-		
-		DocumentModel document = navigationContext.getCurrentDocument();
-		
-		DocumentRef parent = document.getParentRef();
-		String segments = "";
-		while(parent != null) {
-			document = documentManager.getDocument(parent);
-			if(document.getPropertyValue("ottcweb:segment") != null) {
-				if(StringUtils.isNotBlank(document.getPropertyValue("ottcweb:segment").toString())) {
-					segments = document.getPropertyValue("ottcweb:segment").toString().concat("/").concat(segments);
-				}
-			}
-			
-			if(!parent.equals(document.getParentRef())) {
-				parent = document.getParentRef();
-			}
-			else { 
-				parent = null;
-			}
-		}
-		
-		url = url.concat(segments);
-		
-		return url;
-		
-	}
-
+     * @return the portalWebPath
+     */
+    public String getPortalWebPath() {
+        return portalWebPath;
+    }
+    
+    /**
+     * @param portalWebPath the portalWebPath to set
+     */
+    public void setPortalWebPath(String portalWebPath) {
+        this.portalWebPath = portalWebPath;
+    }
+	
 }
