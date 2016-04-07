@@ -62,20 +62,17 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label class="control-label col-sm-2"
-							for="#{widget.id}_crtlistStyle">#{messages['osivia.fragment.criteria.list.style.title']}</label>
-						<div class="col-sm-10">
-							<h:selectOneRadio id="#{widget.id}_crtlistStyle" value="#{crtlist_fgt.displayCriteria.style}" required="true"
-                                              layout="pageDirection">
-								<f:selectItems value="#{criteriaListHelper.styles}"
-									var="style" itemValue="#{style.value()}"
-									itemLabel="#{messages[style.label()]}" />
-							</h:selectOneRadio>
-							<h:message id="#{widget.id}_crtlistStyle_message"
-								styleClass="text-danger" for="#{widget.id}_crtlistStyle" />
-						</div>
-					</div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"
+                            for="#{widget.id}_crtlistStyle">#{messages['osivia.fragment.criteria.style.title']}</label>
+                        <div class="col-sm-10">
+                            <oh:icons id="#{widget.id}_crtlistStyle" src="#{config.listTemplates}"
+                                    value="#{crtlist_fgt.style}" ulStyleClass="cssStyleList"
+                                    binding="#{listStyleSimpleForm.simpleComponent}"
+                                    inputClientId="#{listStyleSimpleForm.simpleComponentClientId}"
+                                    multiSelect="false" iconsGroup="listStyleGroup"/>
+                        </div>
+                    </div>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2"

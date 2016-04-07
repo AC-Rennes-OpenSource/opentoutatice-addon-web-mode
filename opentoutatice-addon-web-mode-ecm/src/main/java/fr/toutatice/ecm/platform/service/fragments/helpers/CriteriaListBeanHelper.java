@@ -79,11 +79,11 @@ public class CriteriaListBeanHelper implements Serializable {
         }
 
         public String type() {
-            return this.nxType;
+            return nxType;
         }
 
         public String label() {
-            return this.label;
+            return label;
         }
     }
 
@@ -100,11 +100,11 @@ public class CriteriaListBeanHelper implements Serializable {
         }
 
         public String value() {
-            return this.nxProperty;
+            return nxProperty;
         }
 
         public String label() {
-            return this.label;
+            return label;
         }
     }
 
@@ -121,41 +121,16 @@ public class CriteriaListBeanHelper implements Serializable {
         }
 
         public String value() {
-            return this.nxProperty;
+            return nxProperty;
         }
 
         public String label() {
-            return this.label;
-        }
-    }
-
-    public enum DisplayStyle implements ListDisplayStyle {
-        normal("normal", "osivia.fragment.criteria.list.style.normal.title"), minimal("mini", "osivia.fragment.criteria.list.style.minimal.title"), editorial(
-                "editorial", "osivia.fragment.criteria.list.style.editorial.title");
-
-        private String portletProperty;
-        private String label;
-
-        private DisplayStyle(String portletProperty, String label) {
-            this.portletProperty = portletProperty;
-            this.label = label;
-        }
-
-        public String value() {
-            return this.portletProperty;
-        }
-
-        public String label() {
-            return this.label;
+            return label;
         }
     }
 
     public DocType[] getDocTypes() {
         return DocType.values();
-    }
-
-    public ListDisplayStyle[] getStyles() {
-        return DisplayStyle.values();
     }
 
     public Order[] getOrders() {

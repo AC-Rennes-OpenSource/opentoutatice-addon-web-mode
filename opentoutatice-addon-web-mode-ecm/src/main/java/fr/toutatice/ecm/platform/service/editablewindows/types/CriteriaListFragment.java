@@ -16,7 +16,7 @@
  *   lbillon
  *   dchevrier
  *   mberhaut1
- *    
+ *
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
 
@@ -39,10 +38,10 @@ import fr.toutatice.ecm.platform.service.fragments.helpers.CriteriaListBeanHelpe
  *
  */
 public class CriteriaListFragment implements EditableWindow {
-	
+
 	public static final String CRITERIA_LIST_SCHEMA = "criteria_list_fragments";
 	public static final String CRITERIA_LIST_XPATH = "crtlistfgt:criteriaListFragment";
-	
+
 	/**
 	 * {@inheritDoc}}
 	 */
@@ -62,7 +61,7 @@ public class CriteriaListFragment implements EditableWindow {
 
 				Map<String, Object> newEntry = new HashMap<String, Object>(1);
 				newEntry.put(EwConstants.REF_URI, uri);
-				
+
 				// Criteria request
 				Map<String, String> criteriaRequest = new HashMap<String, String>(3);
 				//criteriaRequest.put("docTypes", CriteriaListBeanHelper.DocType.All.type());
@@ -71,15 +70,15 @@ public class CriteriaListFragment implements EditableWindow {
 				criteriaRequest.put("currentDocId", document.getId());
 				criteriaRequest.put("currentSpaceId", getSpaceId(document));
 				newEntry.put("requestCriteria", criteriaRequest);
-				
+
 				// Criteria display
 				Map<String, String> criteriaDisplay = new HashMap<String, String>(2);
-				criteriaDisplay.put("style", CriteriaListBeanHelper.DisplayStyle.normal.value());
 				/* FIXME: use schema default values? */
 				criteriaDisplay.put("nbItems", String.valueOf(CriteriaListBeanHelper.NB_REQUEST_RESULTS));
 				criteriaDisplay.put("nbItemsPerPage", String.valueOf(CriteriaListBeanHelper.NB_REQUEST_RESULTS_PER_PAGE));
 				newEntry.put("displayCriteria", criteriaDisplay);
-				
+
+                newEntry.put("style", "normal");
 				listeData.add(newEntry);
 
 				document.setProperties(CRITERIA_LIST_SCHEMA, properties);
@@ -90,7 +89,7 @@ public class CriteriaListFragment implements EditableWindow {
 		}
 		return uri;
 	}
-	
+
 	public static String getSpaceId(DocumentModel document){
 	    String spaceId = (String) document.getPropertyValue(ToutaticeNuxeoStudioConst.CST_DOC_SCHEMA_TOUTATICE_SPACEID);
 	    if(document.hasFacet(ToutaticeNuxeoStudioConst.CST_DOC_FACET_TTC_PUBLISH_SPACE)){

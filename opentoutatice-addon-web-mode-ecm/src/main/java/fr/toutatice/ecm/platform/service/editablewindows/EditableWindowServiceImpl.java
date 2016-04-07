@@ -85,8 +85,8 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
 
     }
 
-    @Override
-	public Map.Entry<EwDescriptor, EditableWindow> findByCode(String code) throws EwServiceException {
+	@Override
+    public Map.Entry<EwDescriptor, EditableWindow> findByCode(String code) throws EwServiceException {
         for (Map.Entry<EwDescriptor, EditableWindow> entry : ewMap.entrySet()) {
             if (entry.getKey().getCode().equals(code)) {
                 return entry;
@@ -130,8 +130,9 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
             throw new EwServiceException(e);
         }
 
-        if (category == null)
+        if (category == null) {
             throw new EwServiceException("osivia.error.fragment_not_found");
+        }
 
         Entry<EwDescriptor, EditableWindow> findByCode = findByCode(category);
 
@@ -195,7 +196,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
                 for (Map<String, Object> window : listeEw) {
                     String regionCompare = window.get("regionId").toString();
                     String orderCompare = window.get("order").toString();
-                    if (regionId.equals(regionCompare) && Integer.parseInt(orderCompare) >= order) {
+                    if (regionId.equals(regionCompare) && (Integer.parseInt(orderCompare) >= order)) {
                         Integer newOrder = Integer.parseInt(orderCompare) + 1;
                         window.put("order", newOrder.toString());
                     }

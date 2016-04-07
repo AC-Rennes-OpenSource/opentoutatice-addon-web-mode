@@ -21,6 +21,7 @@
 	<xs:complexType name="criteriaRequestFragment">
 		<xs:sequence>
 			<xs:element name="refURI" type="xs:string" />
+            <xs:element name="style" type="xs:string" />
 			<xs:element name="requestCriteria" type="nxs:requestCriteria" />
 			<xs:element name="displayCriteria" type="nxs:displayCriteria" />
 		</xs:sequence>
@@ -40,7 +41,6 @@
 
 	<xs:complexType name="displayCriteria">
 		<xs:sequence>
-			<xs:element name="style" type="xs:string" />
 			<xs:element name="nbItems" type="xs:integer" default="10" />
 			<xs:element name="nbItemsPerPage" type="xs:integer"
 				default="10" />
