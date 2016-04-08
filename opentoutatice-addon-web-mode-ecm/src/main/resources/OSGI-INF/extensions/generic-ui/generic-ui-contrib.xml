@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<component name="org.osivia.opentoutatice.web.mode.generic.ui">
+
+    <require>fr.toutatice.ecm.platform.service.generic.ui</require>
+
+    <!-- FIXME: temporary? implies dependance on generic ui ....!!! -->
+    <extension target="fr.toutatice.ecm.platform.generic.ui.GenericUIService"
+        point="layouts">
+
+
+        <layouts mode="edit">
+            <layout name="toutatice_webUrl">
+                <position>
+                    <at>end</at>
+                </position>
+                <excludedTypes>
+                    <type>WebConfigurationFolder</type>
+                    <type>WebConfiguration</type>
+                    <type>TemplateRoot</type>
+                </excludedTypes>
+            </layout>
+        </layouts>
+
+        <layouts mode="create">
+            <layout name="toutatice_webUrl">
+                <position>
+                    <at>end</at>
+                </position>
+                <excludedTypes>
+                    <type>WebConfigurationFolder</type>
+                    <type>WebConfiguration</type>
+                    <type>TemplateRoot</type>
+                </excludedTypes>
+            </layout>
+        </layouts>
+
+    </extension>
+
+</component>
