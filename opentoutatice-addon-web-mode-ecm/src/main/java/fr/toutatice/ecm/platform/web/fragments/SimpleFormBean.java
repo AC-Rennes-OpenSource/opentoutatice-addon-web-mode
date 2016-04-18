@@ -18,9 +18,6 @@
  */
 package fr.toutatice.ecm.platform.web.fragments;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Install;
 import org.jboss.seam.annotations.Name;
@@ -29,6 +26,7 @@ import org.jboss.seam.annotations.Roles;
 import org.jboss.seam.annotations.Scope;
 
 import fr.toutatice.ecm.platform.core.constants.ExtendedSeamPrecedence;
+import fr.toutatice.ecm.platform.web.forms.bean.SpacesConfigFormBean;
 
 /**
  * SimpleForm is used for configuration icon selector to hold an UIComponent
@@ -37,36 +35,10 @@ import fr.toutatice.ecm.platform.core.constants.ExtendedSeamPrecedence;
  */
 @Name("simpleForm")
 @Scope(ScopeType.SESSION)
-@Install(precedence = ExtendedSeamPrecedence.TOUTATICE)
-@Roles({@Role(name = "genericStyleSimpleForm", scope = ScopeType.SESSION), @Role(name = "listStyleSimpleForm", scope = ScopeType.SESSION),
-    	@Role(name = "templateSimpleForm", scope = ScopeType.SESSION),
-    	@Role(name = "themeSimpleForm", scope = ScopeType.SESSION),
-    	@Role(name = "pageTemplateSimpleForm", scope = ScopeType.SESSION), @Role(name = "subpageTemplateSimpleForm", scope = ScopeType.SESSION)})
-@Role(name = "field")
-public class SimpleFormBean {
-
-    private UIComponent simpleComponent;
-
-    /**
-     * @return the simpleComponent
-     */
-    public UIComponent getSimpleComponent() {
-        return simpleComponent;
-    }
-
-    /**
-     * @param simpleComponent the simpleComponent to set
-     */
-    public void setSimpleComponent(UIComponent simpleComponent) {
-        this.simpleComponent = simpleComponent;
-    }
-
-
-    /**
-     * @return the UIComponent client ID
-     */
-    public String getSimpleComponentClientId() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        return simpleComponent.getClientId(fc);
-    }
+@Install(precedence = ExtendedSeamPrecedence.INHERIT_TOUTATICE)
+@Roles({@Role(name = "genericStyleSimpleForm", scope = ScopeType.SESSION), 
+        @Role(name = "listStyleSimpleForm", scope = ScopeType.SESSION),
+        @Role(name = "templateSimpleForm", scope = ScopeType.SESSION)})
+public class SimpleFormBean extends SpacesConfigFormBean {
+    
 }
