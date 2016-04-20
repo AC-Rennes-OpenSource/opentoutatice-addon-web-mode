@@ -3,7 +3,7 @@
 	name="org.osivia.opentoutatice.webpage.metadata.layouts">
 
 	<require>fr.toutatice.ecm.platform.web.document.forms.layouts.webpage</require>
-	<require>org.osivia.opentoutatice.web.mode.widgets</require>
+	<require>org.osivia.opentoutatice.web.mode.urls.widgets</require>
 
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="layouts">
@@ -89,6 +89,7 @@
                 <property name="disabled">#{(!currentUser.administrator and !securityActions.hasAllRights())
                         or currentDocument.hasFacet('WebidDisabled')}
                 </property>
+                <property name="required">true</property>
                 <property name="validator">#{toutaticeValidator.validateWebId}
                 </property>
             </properties>

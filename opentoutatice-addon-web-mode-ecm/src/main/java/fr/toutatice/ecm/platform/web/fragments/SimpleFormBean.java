@@ -26,7 +26,7 @@ import org.jboss.seam.annotations.Roles;
 import org.jboss.seam.annotations.Scope;
 
 import fr.toutatice.ecm.platform.core.constants.ExtendedSeamPrecedence;
-import fr.toutatice.ecm.platform.web.forms.bean.SpacesConfigFormBean;
+import fr.toutatice.ecm.platform.web.forms.bean.ComponentsIdsBean;
 
 /**
  * SimpleForm is used for configuration icon selector to hold an UIComponent
@@ -39,6 +39,6 @@ import fr.toutatice.ecm.platform.web.forms.bean.SpacesConfigFormBean;
 @Roles({@Role(name = "genericStyleSimpleForm", scope = ScopeType.SESSION), 
         @Role(name = "listStyleSimpleForm", scope = ScopeType.SESSION),
         @Role(name = "templateSimpleForm", scope = ScopeType.SESSION)})
-public class SimpleFormBean extends SpacesConfigFormBean {
+public class SimpleFormBean extends ComponentsIdsBean {
     
 }

@@ -50,13 +50,16 @@ public class FragmentsValidatorBean implements Serializable {
 
     private static final long serialVersionUID = -3623228467660612275L;
     
-    /** Simple Web URL. */
+    /** Nuxeo and portal indicator URL */
+    private static final String[] NX_PORTAL_PREFIX_URL = {"/nuxeo/", "/portal/", "/portail/"};
+    
+    /** Simple external URL. */
     private static final Pattern SIMPLE_WEB_URL = Pattern.compile("(http|https)://(.*)");
     
     public void validateExternelURLField(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         String url = (String) value;
         
-        if(StringUtils.isNotBlank(url) && !StringUtils.contains(url, "/nuxeo/")){
+        if(StringUtils.isNotBlank(url) && StringUtils.indexOfAny(url, NX_PORTAL_PREFIX_URL) == -1){
                 Matcher urlMatcher = SIMPLE_WEB_URL.matcher(url);
                 if(!urlMatcher.matches()){
                     String msg = ComponentUtils.translate(context, "osivia.fgts.validator.malformed.url");

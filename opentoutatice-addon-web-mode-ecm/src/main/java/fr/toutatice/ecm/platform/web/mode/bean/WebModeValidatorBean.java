@@ -1,7 +1,7 @@
 /**
  *
  */
-package org.osivia.opentoutatice.web.bean;
+package fr.toutatice.ecm.platform.web.mode.bean;
 
 import java.io.Serializable;
 import java.util.regex.Matcher;

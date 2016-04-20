@@ -47,7 +47,6 @@
 			<xs:element name="refURI" type="xs:string" />
 			<xs:element name="zoomTemplate" type="xs:string" />
 			<xs:element name="href" type="xs:string" />
-			<xs:element name="hrefTitle" type="xs:string" />
 			<xs:element name="content" type="xs:string" />
 			<xs:element name="picture" type="xs:string" />
 		</xs:sequence>

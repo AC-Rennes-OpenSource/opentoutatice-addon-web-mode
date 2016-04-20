@@ -37,8 +37,8 @@
                             <div class="input-group ">
                                 <h:inputHidden id="targetPath" class="targetPath"
                                     value="#{zoom.href}" validator="#{fgtsValidator.validateExternelURLField}" />
-                                <h:inputText id="targetTitle" class="targetTitle form-control"
-                                    value="#{zoom.hrefTitle}" onblur="setManualPath(1);"/>
+                                <input type="text" id="#{zoom.refURI}_targetTitle" class="targetTitle form-control"
+                                    value="#{fragmentBean.getTitleByPath(zoom.href)}" onblur="setManualPath(1);" required="false"/>
                                 <span class="input-group-btn"> <a href="#targetPath"
                                     id="delete_target" class="btn btn-default"
                                     onclick="removeTarget(1);"> <i
@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <h:outputLabel value="#{messages['osivia.fragment.zoom.form.description']}" class="control-label col-sm-2" />
                     <div class="col-sm-8">
-                        <nxl:widgetType id="zl_desc" name="#{config.getWebsiteParamString('zoomTinyMce','ottc_inline_htmltext')}" mode="edit" class="form-control" 
+                        <nxl:widgetType id="zl_desc" name="#{config.getWebsiteParamString('zoomTinyMce','ottc_minimal_htmltext')}" mode="edit" class="form-control" 
                             title="Texte du lien." value="#{zoom.content}" />
                     </div>
                 </div>

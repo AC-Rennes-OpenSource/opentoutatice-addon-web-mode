@@ -3,7 +3,7 @@
 <component name="org.osivia.opentoutatice.web.mode.layouts">
 
 	<require>fr.toutatice.ecm.platform.web.document.forms.layouts.webapp</require>
-	<require>org.osivia.opentoutatice.web.mode.widgets</require>
+	<require>org.osivia.opentoutatice.web.mode.urls.widgets</require>
 
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="layouts">
