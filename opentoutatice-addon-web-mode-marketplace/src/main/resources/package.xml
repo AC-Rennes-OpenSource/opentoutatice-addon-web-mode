@@ -21,7 +21,8 @@
 	</platforms>
 	<dependencies>
 		<!-- Dependance sur la plate-forme opentoutatice -->
-		<package>open-toutatice:3.2.2-RC09</package>
+		<package>open-toutatice:3.2.2-RC10</package>
+		<package>open-toutatice-addons-simple-ui:1.1-RC01</package>
 	</dependencies>
 	<license>LGPL 2.1</license>
 	<license-url>http://www.gnu.org/licenses/lgpl-2.1.html</license-url>

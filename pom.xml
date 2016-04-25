@@ -12,7 +12,7 @@
 
 	<properties>
 		<nuxeo.version>6.0-HF21</nuxeo.version>
-		<ottc.version>3.2.2-SNAPSHOT</ottc.version>
+		<ottc.version>3.2.2-RC10</ottc.version>
 	</properties>
 	
 	<modules>
