@@ -3,6 +3,7 @@
 <fragment version="1">
 
 	<require>fr.toutatice.ecm.platform.services</require>
+	<require>org.osivia.opentoutatice.simple.ui</require>
 
 	<extension target="application#MODULE">
 

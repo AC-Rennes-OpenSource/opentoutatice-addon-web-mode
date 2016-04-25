@@ -25,6 +25,7 @@ import org.nuxeo.ecm.platform.ui.web.api.NavigationContext;
 import org.nuxeo.ecm.platform.ui.web.util.ComponentUtils;
 
 import fr.toutatice.ecm.platform.core.constants.ExtendedSeamPrecedence;
+import fr.toutatice.ecm.platform.web.mode.service.SegmentService;
 
 
 /**
@@ -45,8 +46,17 @@ public class WebModeValidatorBean implements Serializable {
 
     @In(create = true, required = true)
     protected NavigationContext navigationContext;
+    
+    @In(create = true)
+    protected SegmentService segmentService;
 
-
+    /**
+     * 
+     * @param context
+     * @param component
+     * @param value error if segment value is malformed or not unique.
+     * @throws ValidatorException
+     */
     public void validateSegment(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         if(StringUtils.isNotBlank((String) value)){
             Matcher m = patternSegment.matcher((String) value);
@@ -63,25 +73,14 @@ public class WebModeValidatorBean implements Serializable {
         }
     }
 
-
-    private boolean validateUnicity(String value) {
-
+    /**
+     * 
+     * @param value
+     * @return true if segment value is unique.
+     */
+    public boolean validateUnicity(String value) {
         final DocumentModel doc = navigationContext.getCurrentDocument();
-
-        final DocumentModelList siblings = documentManager.getChildren(doc.getParentRef());
-
-        if (siblings != null) {
-            for (DocumentModel documentModel : siblings) {
-                if (!StringUtils.startsWith(documentModel.getPathAsString(), doc.getPathAsString())) {
-                    final String segmentUrl = (String) documentModel.getPropertyValue("ottcweb:segment");
-                    if (StringUtils.equals(value, segmentUrl)) {
-                        return false;
-                    }
-                }
-            }
-        }
-
-        return true;
+        return segmentService.isUniqueSegment(documentManager, doc, value);
     }
 
 }

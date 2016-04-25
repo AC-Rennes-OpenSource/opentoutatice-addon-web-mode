@@ -8,7 +8,6 @@ import java.util.Iterator;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.BooleanUtils;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Install;
@@ -28,6 +27,7 @@ import fr.toutatice.ecm.platform.core.constants.ToutaticeNuxeoStudioConst;
 import fr.toutatice.ecm.platform.core.helper.ToutaticeDocumentHelper;
 import fr.toutatice.ecm.platform.web.document.ToutaticeDocumentActionsBean;
 import fr.toutatice.ecm.platform.web.mode.constants.WebModeConstants;
+import fr.toutatice.ecm.platform.web.mode.service.SegmentService;
 
 /**
  * @author david
@@ -49,22 +49,11 @@ public class WebModeDocumentActionsBean implements Serializable {
 	@In(create = true)
 	protected ToutaticeDocumentActionsBean documentActions;
 	
+	@In(create = true)
+	protected SegmentService segmentService;
+	
 	@RequestParameter("portalWebPath")
     private String portalWebPath;
-	
-	/**
-	 * Default behavior: all Folderish are shown in menu.
-	 * @throws ClientException
-	 */
-	@Observer(value = {EventNames.NEW_DOCUMENT_CREATED})
-    public void initShowInMenu() throws ClientException {
-	    documentActions.initShowInMenu();
-		
-		DocumentModel newDocument = navigationContext.getChangeableDocument();
-		boolean folderish = newDocument.hasFacet("Folderish");
-		
-		newDocument.setPropertyValue(ToutaticeNuxeoStudioConst.CST_DOC_XPATH_TOUTATICE_SIM, folderish);
-	}
 	
 	/**
      * @return the portalWebPath
@@ -87,38 +76,7 @@ public class WebModeDocumentActionsBean implements Serializable {
      *           enabled.
      */
     public boolean supportsWebUrls(DocumentModel currentDocument) {
-        boolean supports = false;
-        
-        // Case of document in Publish Space with webUrls enabled
-        DocumentModelList publishSpaceList = ToutaticeDocumentHelper.getParentPublishSpaceList(documentManager, currentDocument, true, true);
-        
-        Boolean webUrlsEnabled = Boolean.FALSE;
-        DocumentModel publishSpaceWithWebUrls = null;
-        if (CollectionUtils.isNotEmpty(publishSpaceList)) {
-            Iterator<DocumentModel> iterator = publishSpaceList.iterator();
-            while (iterator.hasNext() && !webUrlsEnabled) {
-                DocumentModel publishSpace = iterator.next();
-                webUrlsEnabled = (Boolean) publishSpace.getPropertyValue(WebModeConstants.ARE_WEB_URLS_ENABLED_PROP);
-                if (BooleanUtils.isTrue(webUrlsEnabled)){
-                    publishSpaceWithWebUrls = publishSpace;
-                }
-            }
-        }
-        
-        // Case of document in a Domain containing at least one PortalSite with webUrls enabled
-        if(BooleanUtils.isTrue(webUrlsEnabled)){
-            DocumentModel domainOfDoc = ToutaticeDocumentHelper.getDomain(documentManager, currentDocument, true);
-            DocumentModel domainOfPublishSpace = ToutaticeDocumentHelper.getDomain(documentManager, publishSpaceWithWebUrls, true);
-            
-            boolean sameDomain = StringUtils.equals(domainOfPublishSpace.getId(), domainOfDoc.getId());
-            if (sameDomain && currentDocument.hasFacet(WebModeConstants.HAS_WEB_URL_FACET)) {
-                supports = true;
-            }
-        } else {
-            supports = false;
-        }
-        
-        return supports;
+        return this.segmentService.supportsWebUrls(documentManager, currentDocument);
     }
 	
 }

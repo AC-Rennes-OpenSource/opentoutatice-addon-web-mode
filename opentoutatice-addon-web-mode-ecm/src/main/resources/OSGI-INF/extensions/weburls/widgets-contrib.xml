@@ -32,14 +32,10 @@
 				<field>ottcweb:segment</field>
 			</fields>
 			<widgetModes>
-                <mode value="any">#{nxu:test(webModeDocumentActionsBean.supportsWebUrls(currentDocument),
-                    layout.mode, 'hidden')}
-                </mode>
-            </widgetModes>
-			<properties widgetMode="edit">
-				<property name="validator">#{webModeValidator.validateSegment}
-				</property>
-			</properties>
+				<mode value="any">#{nxu:test(webModeDocumentActionsBean.supportsWebUrls(currentDocument),
+					layout.mode, 'hidden')}
+				</mode>
+			</widgetModes>
 			<properties mode="any">
 				<property name="template">
 					/widgets/toutatice_weburl_widget.xhtml

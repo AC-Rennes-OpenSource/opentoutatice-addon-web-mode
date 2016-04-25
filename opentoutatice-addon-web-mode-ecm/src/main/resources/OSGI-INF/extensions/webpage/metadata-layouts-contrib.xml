@@ -62,7 +62,7 @@
 					<widget>ottc_weburl</widget>
 				</row> 
 				<row>
-					<widget>ottc_webid</widget>
+					<widget>ottc_webid_page</widget>
 				</row>
 			</rows>
 		</layout>
@@ -74,7 +74,7 @@
 		
 		<widget name="ottc_webid" type="template">
 			<labels>
-				<label mode="any">webmode.label.webid</label>
+				<label mode="any">toutatice.label.title.webid.widget</label>
 			</labels>
 			<translated>true</translated>
 			<fields>
@@ -94,6 +94,29 @@
                 </property>
             </properties>
 		</widget>
+		
+		<widget name="ottc_webid_page" type="template">
+            <labels>
+                <label mode="any">webmode.label.webid</label>
+            </labels>
+            <translated>true</translated>
+            <fields>
+                <field>ttc:webid</field>
+            </fields>
+            <properties mode="any">
+                <property name="template">
+                    /widgets/toutatice_removewebid_widget.xhtml
+                </property>
+            </properties>
+            <properties widgetMode="edit">
+                <property name="disabled">#{(!currentUser.administrator and !securityActions.hasAllRights())
+                        or currentDocument.hasFacet('WebidDisabled')}
+                </property>
+                <property name="required">true</property>
+                <property name="validator">#{toutaticeValidator.validateWebId}
+                </property>
+            </properties>
+        </widget>
 		
 		<widget name="ottc_selectors" type="textarea">
 			<labels>

@@ -8,17 +8,22 @@
 
     <c:if test="#{widget.mode == 'edit'}">
 
-        <a4j:region renderRegionOnly="true">
-            <a4j:outputPanel id="#{widget.id}_webid_panel" ajaxRendered="true">
-                <div class="input-group">
-                        <h:selectBooleanCheckbox
-                            id="#{widget.id}_space_enable" value="#{field_0}">
-                            <!-- Render input of toutatice_removewebid_widget.xhtml -->
-                            <a4j:ajax event="click" render="@this webid_delete" />
-                        </h:selectBooleanCheckbox>
-                </div>
-            </a4j:outputPanel>
-        </a4j:region>
+    <script type="text/javascript">
+        var $JQry = jQuery.noConflict();
+
+        function confirmActivation(checkbox){
+            if($JQry(checkbox).is(":checked")) {
+                confirm("#{messages['webmode.label.weburl.enable.warn']}");
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+        <div class="input-group">
+            <h:selectBooleanCheckbox id="#{widget.id}_space_enable" value="#{field_0}" disabled="#{field_0}"
+                onclick="confirmActivation(this);" />
+        </div>
 
     </c:if>
 
