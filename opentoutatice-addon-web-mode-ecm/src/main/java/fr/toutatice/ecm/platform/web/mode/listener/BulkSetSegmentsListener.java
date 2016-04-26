@@ -42,7 +42,7 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
                 CoreSession session = sourceDocument.getCoreSession();
                 
                 SegmentService segmentService = Framework.getService(SegmentService.class);
-                if (sourceDocument.isFolder() && segmentService.supportsWebUrls(session, sourceDocument)) {
+                if (segmentService.supportsWebUrls(session, sourceDocument)) {
                     setSegments(session, segmentService, sourceDocument);
                 }
 
