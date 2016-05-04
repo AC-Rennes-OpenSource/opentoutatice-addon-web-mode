@@ -15,7 +15,9 @@ import org.nuxeo.ecm.core.event.PostCommitEventListener;
 import org.nuxeo.ecm.core.event.impl.DocumentEventContext;
 import org.nuxeo.runtime.api.Framework;
 
+import fr.toutatice.ecm.platform.core.constants.ToutaticeGlobalConst;
 import fr.toutatice.ecm.platform.core.helper.ToutaticeDocumentHelper;
+import fr.toutatice.ecm.platform.core.helper.ToutaticeSilentProcessRunnerHelper;
 import fr.toutatice.ecm.platform.web.mode.constants.WebModeConstants;
 import fr.toutatice.ecm.platform.web.mode.service.SegmentService;
 
@@ -45,7 +47,8 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
                 if (segmentService.supportsWebUrls(session, sourceDocument)) {
                     setSegments(session, segmentService, sourceDocument);
                 }
-
+                
+                session.save();
             }
         }
     }
@@ -69,7 +72,6 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
             }
         }
         
-        session.save();
     }
 
     /**
@@ -83,7 +85,17 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
     private void generateSegment(CoreSession session, SegmentService segmentService, DocumentModel document) {
         String segment = segmentService.createSegment(session, document);
         document.setPropertyValue(WebModeConstants.SEGMENT_PROPERTY, segment);
-        ToutaticeDocumentHelper.saveDocumentSilently(session, document, false);
+        ToutaticeDocumentHelper.saveDocumentSilently(session, document, true);
+        
+        // Check local proxy
+        DocumentModel localProxy = ToutaticeDocumentHelper.getProxy(session, document, null);
+        if(localProxy != null){
+            DocumentModel version = session.getSourceDocument(localProxy.getRef());
+            version.putContextData(CoreSession.ALLOW_VERSION_WRITE, Boolean.TRUE);
+            version.setPropertyValue(WebModeConstants.SEGMENT_PROPERTY, segment);
+            ToutaticeDocumentHelper.saveDocumentSilently(session, version, 
+                    ToutaticeSilentProcessRunnerHelper.DEFAULT_FILTERED_SERVICES_LIST, true);
+        }
     }
 
 }

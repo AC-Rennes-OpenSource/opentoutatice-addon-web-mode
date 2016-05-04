@@ -43,7 +43,7 @@ public class SegmentService extends DefaultComponent {
         DocumentModel domain = ToutaticeDocumentHelper.getDomain(session, currentDocument, true);
         if(domain != null){
 
-            String query = "select * from PortalSite where ecm:parentId = '%s' and ottcwebc:enableWebUrl = 1";
+            String query = "select * from PortalSite where ecm:ancestorId = '%s' and ottcwebc:enableWebUrl = 1";
             DocumentModelList portalSitesWithWebUrls = session.query(String.format(query, domain.getId()));
     
             // There exists at least one PortalSite with webUrls enabled
