@@ -23,6 +23,7 @@ import org.nuxeo.ecm.platform.ui.web.api.NavigationContext;
 import org.nuxeo.ecm.webapp.helpers.EventNames;
 
 import fr.toutatice.ecm.platform.core.constants.ExtendedSeamPrecedence;
+import fr.toutatice.ecm.platform.core.constants.ToutaticeGlobalConst;
 import fr.toutatice.ecm.platform.core.constants.ToutaticeNuxeoStudioConst;
 import fr.toutatice.ecm.platform.core.helper.ToutaticeDocumentHelper;
 import fr.toutatice.ecm.platform.web.document.ToutaticeDocumentActionsBean;
@@ -76,6 +77,9 @@ public class WebModeDocumentActionsBean implements Serializable {
      *           enabled.
      */
     public boolean supportsWebUrls(DocumentModel currentDocument) {
+        if (currentDocument.hasFacet(ToutaticeNuxeoStudioConst.CST_FACET_REMOTE_PROXY)){
+            return false;
+        }
         return this.segmentService.supportsWebUrls(documentManager, currentDocument);
     }
 	

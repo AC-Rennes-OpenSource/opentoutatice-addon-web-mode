@@ -9,15 +9,12 @@ import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.event.DocumentEventTypes;
 import org.nuxeo.ecm.core.api.model.Property;
-import org.nuxeo.ecm.core.api.security.SecurityConstants;
 import org.nuxeo.ecm.core.event.Event;
 import org.nuxeo.ecm.core.event.EventContext;
 import org.nuxeo.ecm.core.event.EventListener;
 import org.nuxeo.ecm.core.event.EventService;
 import org.nuxeo.ecm.core.event.impl.DocumentEventContext;
-import org.nuxeo.ecm.core.event.impl.EventBundleImpl;
 import org.nuxeo.ecm.core.event.impl.EventImpl;
-import org.nuxeo.ecm.core.event.impl.ShallowEvent;
 import org.nuxeo.runtime.api.Framework;
 
 import fr.toutatice.ecm.platform.core.constants.ToutaticeNuxeoStudioConst;
@@ -53,10 +50,9 @@ public class SetSegmentListener implements EventListener {
                 EventContext ctx = new DocumentEventContext(session, evtCtx.getPrincipal(), session.getDocument(sourceDocument.getRef()));
                 Event redirectEvent = new EventImpl(DocumentEventTypes.BEFORE_DOC_UPDATE, ctx);
                 
-                ShallowEvent shallowEvent = ShallowEvent.create(redirectEvent);
-                EventBundleImpl b = new EventBundleImpl();
-                b.push(shallowEvent);
-                Framework.getLocalService(EventService.class).fireEventBundle(b);
+                // Event beforeDocumentModification will be recorded because it is not immediate
+                Framework.getLocalService(EventService.class).fireEvent(redirectEvent);
+                
             }
             
         } else if(!DocumentEventTypes.BEFORE_DOC_UPDATE.equals(event.getName())) {
