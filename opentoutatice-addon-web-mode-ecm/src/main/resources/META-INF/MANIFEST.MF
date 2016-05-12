@@ -12,12 +12,12 @@ Nuxeo-Component: OSGI-INF/extensions/webpage/layouts-contrib.xml,
  OSGI-INF/extensions/webpage/metadata-layouts-contrib.xml,
  OSGI-INF/extensions/webpage/theme-contrib.xml,
  OSGI-INF/extensions/webpage/actions-contrib.xml,
+ OSGI-INF/extensions/webpage/bo-ui-types-contrib.xml,
  OSGI-INF/extensions/weburls/widgets-contrib.xml,
  OSGI-INF/extensions/weburls/core-types-contrib.xml,
- OSGI-INF/extensions/weburls/metadata-simple-ui-contrib.xml,
  OSGI-INF/extensions/weburls/segment-service.xml,
  OSGI-INF/extensions/weburls/listeners-contrib.xml,
- OSGI-INF/extensions/layouts-contrib.xml,
+ OSGI-INF/extensions/weburls/generic-ui-contrib.xml,
  OSGI-INF/extensions/editablewindows/toutatice-core-types-contrib.xml,
  OSGI-INF/extensions/editablewindows/toutatice-schemas-contrib.xml,
  OSGI-INF/extensions/editablewindows/toutatice-editablewindows-service.xml,
@@ -30,6 +30,7 @@ Nuxeo-Component: OSGI-INF/extensions/webpage/layouts-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-core-types-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-lifecycle-contrib.xml, 
  OSGI-INF/extensions/medialibrary/toutatice-filters-contrib.xml,
- OSGI-INF/extensions/medialibrary/toutatice-ui-types-contrib.xml
+ OSGI-INF/extensions/medialibrary/toutatice-ui-types-contrib.xml,
+ OSGI-INF/extensions/bo-ui/summary-view-contrib.xml
 
 

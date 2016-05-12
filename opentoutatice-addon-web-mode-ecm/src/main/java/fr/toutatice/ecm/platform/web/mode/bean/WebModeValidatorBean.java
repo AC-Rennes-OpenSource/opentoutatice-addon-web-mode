@@ -39,7 +39,7 @@ public class WebModeValidatorBean implements Serializable {
 
     private static final long serialVersionUID = 5623376301895535136L;
 
-    private static final Pattern patternSegment = Pattern.compile("([a-zA-Z_0-9\\-]+)");
+    private static final Pattern patternSegment = Pattern.compile("([a-z_0-9\\-]+)");
 
     @In(create = true, required = true)
     protected transient CoreSession documentManager;

@@ -11,7 +11,9 @@
         <c:choose>
             <c:when test="#{widget.mode == 'edit'}">
                 <h:inputText id="#{widget.id}_weburl" value="#{field_0}" 
-                    required="false" style="display:inline; width:auto;" validator="#{webModeValidator.validateSegment}"/>
+                    style="display:inline; width:auto;" 
+                    onkeyup="jQuery(this).val(jQuery(this).val().toLowerCase());"  
+                    validator="#{webModeValidator.validateSegment}" required="false"/>
             </c:when>
             <c:otherwise>
                 <h:outputText value="#{field_0}" />

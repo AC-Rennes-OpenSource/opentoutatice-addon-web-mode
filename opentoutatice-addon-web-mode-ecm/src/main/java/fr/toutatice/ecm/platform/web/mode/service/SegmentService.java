@@ -123,7 +123,7 @@ public class SegmentService extends DefaultComponent {
      */
     protected String generateSegment(DocumentModel document) {
         String title = document.getTitle();
-        return IdUtils.generateId(title, "-", false, 30);
+        return IdUtils.generateId(title, "-", true, 30);
     }
 
     /**
