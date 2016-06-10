@@ -3,9 +3,6 @@
 	<title>Addon for CMS in osivia portal</title>
 	<description>
 		<p>Enable the web mode in osivia portal.</p>
-
-		Main Fixes:
-		* Moved from opentoutatice platform 
 	</description>
 	<home-page>http://www.toutatice.fr</home-page>
 	<vendor>Academie de Rennes - OSIVIA</vendor>
@@ -21,7 +18,7 @@
 	</platforms>
 	<dependencies>
 		<!-- Dependance sur la plate-forme opentoutatice -->
-		<package>open-toutatice:3.2.2-RC13</package>
+		<package>open-toutatice:3.2.2</package>
 	</dependencies>
 	<license>LGPL 2.1</license>
 	<license-url>http://www.gnu.org/licenses/lgpl-2.1.html</license-url>
