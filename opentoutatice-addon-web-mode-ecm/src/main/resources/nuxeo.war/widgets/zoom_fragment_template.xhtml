@@ -72,9 +72,14 @@
                                 class="glyphicons halflings pencil"></i></a>
                         </div>
                     </div>
-
+                    
                     <h:inputHidden id="picturePath" class="picturePath"
                         value="#{zoom.picture}" />
+                        
+                    <!-- <h:inputHidden id="picturePath" class="picturePath"
+                        value="#{zoom.picture}" >
+                        <f:converter converterId="org.opentoutatice.ecm.attached.files.url.converter.DocumentContentConverter" />
+                    </h:inputHidden> -->
 
                 </div>
                 
