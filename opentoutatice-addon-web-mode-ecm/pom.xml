@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>opentoutatice-ecm.web-mode</groupId>
 		<artifactId>opentoutatice-web-mode-parent</artifactId>
-		<version>3.2.4</version>
+		<version>3.2.5-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>opentoutatice-web-mode-ecm</artifactId>
-  <version>3.2.2</version>
+  <version>3.2.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>opentoutatice-web-mode-ecm</name>
 	<description>
@@ -31,10 +31,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-
-  <scm>
-    <developerConnection>scm:svn:http://projet.toutatice.fr/repos/toutatice-ecm/opentoutatice-addons/opentoutatice-web-mode/tags/3.2.4/opentoutatice-web-mode-ecm</developerConnection>
-  </scm>
 </project>
