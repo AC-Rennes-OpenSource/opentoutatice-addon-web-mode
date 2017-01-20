@@ -5,10 +5,11 @@
 	<parent>
 		<groupId>opentoutatice-ecm.web-mode</groupId>
 		<artifactId>opentoutatice-web-mode-parent</artifactId>
-		<version>3.2.2</version>
+		<version>3.2.4</version>
 	</parent>
 
 	<artifactId>opentoutatice-web-mode-ecm</artifactId>
+  <version>3.2.4</version>
 	<packaging>jar</packaging>
 	<name>opentoutatice-web-mode-ecm</name>
 	<description>
@@ -30,6 +31,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
