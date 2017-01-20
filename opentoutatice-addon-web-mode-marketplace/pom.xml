@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>opentoutatice-ecm.web-mode</groupId>
 		<artifactId>opentoutatice-web-mode-parent</artifactId>
-		<version>3.2.4-SNAPSHOT</version>
+		<version>3.2.4</version>
 	</parent>
 
 	<artifactId>opentoutatice-web-mode-marketplace</artifactId>
-  <version>3.2.7-SNAPSHOT</version>
+  <version>3.2.4</version>
 	<packaging>zip</packaging>
 	<name>Marketplace package - Web mode</name>
 
