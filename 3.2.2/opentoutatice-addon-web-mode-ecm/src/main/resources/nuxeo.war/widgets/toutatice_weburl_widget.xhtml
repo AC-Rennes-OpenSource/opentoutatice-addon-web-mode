@@ -1,0 +1,31 @@
+<f:subview xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:nxu="http://nuxeo.org/nxweb/util"
+    xmlns:nxdir="http://nuxeo.org/nxdirectory"
+    xmlns:nxl="http://nuxeo.org/nxforms/layout" id="#{widget.id}">
+    
+    <div class="controls form-inline">
+        #{webModeDocumentActionsBean.portalWebPath}
+        <c:choose>
+            <c:when test="#{widget.mode == 'edit'}">
+                <h:inputText id="#{widget.id}_weburl" value="#{field_0}" 
+                    style="display:inline; width:auto;" 
+                    onkeyup="jQuery(this).val(jQuery(this).val().toLowerCase());"  
+                    validator="#{webModeValidator.validateSegment}" required="false"/>
+            </c:when>
+            <c:otherwise>
+                <h:outputText value="#{field_0}" />
+            </c:otherwise>
+        </c:choose>
+    </div>
+    <h:message styleClass="errorMessage" for="#{widget.id}_weburl"></h:message>
+
+    <br />
+
+    <p class="alert alert-info">
+        <i class="glyphicons halflings info-sign"></i> <span class="text-info">#{messages['webmode.label.weburl.help']}</span>
+    </p>
+
+</f:subview>

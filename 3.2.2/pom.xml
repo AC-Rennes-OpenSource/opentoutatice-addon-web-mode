@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>opentoutatice-ecm.web-mode</groupId>
+	<artifactId>opentoutatice-web-mode-parent</artifactId>
+	<packaging>pom</packaging>
+	<description>Addon CMS for websites</description>
+	<name>opentoutatice-web-mode-parent</name>
+	<version>3.2.2</version>
+
+	<properties>
+		<nuxeo.version>6.0-HF21</nuxeo.version>
+		<ottc.version>3.2.2</ottc.version>
+		<nuxeo.cap.distribution.version>6.0</nuxeo.cap.distribution.version>
+	</properties>
+
+	<modules>
+		<module>opentoutatice-addon-web-mode-ecm</module>
+		<module>opentoutatice-addon-web-mode-marketplace</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.nuxeo.ecm.distribution</groupId>
+				<artifactId>nuxeo-distribution</artifactId>
+				<version>${nuxeo.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.nuxeo.ecm.distribution</groupId>
+				<artifactId>nuxeo-distribution-cap</artifactId>
+				<version>${nuxeo.cap.distribution.version}</version>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>opentoutatice-ecm.platform</groupId>
+				<artifactId>opentoutatice-ecm-platform-web</artifactId>
+				<version>${ottc.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<tagBase>http://projet.toutatice.fr/repos/toutatice-ecm/opentoutatice-addons/opentoutatice-web-mode/tags</tagBase>
+					<releaseProfiles>unpack,pack</releaseProfiles>
+					<preparationGoals>clean install</preparationGoals>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.nuxeo.build</groupId>
+					<artifactId>ant-assembly-maven-plugin</artifactId>
+					<version>2.0.1</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<archive>
+							<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+							<manifestEntries>
+								<Bundle-Version>${eclipseVersion}-t${buildNumber}</Bundle-Version>
+								<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+							</manifestEntries>
+						</archive>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<scm>
+		<developerConnection>scm:svn:http://projet.toutatice.fr/repos/toutatice-ecm/opentoutatice-addons/opentoutatice-web-mode/tags/3.2.2</developerConnection>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>toutatice-releases</id>
+			<url>http://projet.toutatice.fr/nexus/content/repositories/toutatice-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>toutatice-snapshots</id>
+			<url>http://projet.toutatice.fr/nexus/content/repositories/toutatice-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
+

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<component name="org.osivia.opentoutatice.web.mode.urls.widgets">
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="widgets">
+
+		<widget name="enable_weburl" type="template">
+			<labels>
+				<label mode="any">webmode.label.weburl.enable</label>
+			</labels>
+			<translated>true</translated>
+			<fields>
+				<field>ottcwebc:enableWebUrl</field>
+			</fields>
+			<properties mode="any">
+				<property name="template">/widgets/toutatice_weburl_enable_widget.xhtml
+				</property>
+			</properties>
+			<widgetModes>
+				<mode value="any">#{nxu:test(currentDocument.type == 'PortalSite',
+					layout.mode, 'hidden')}
+				</mode>
+			</widgetModes>
+		</widget>
+
+		<widget name="ottc_weburl" type="template">
+			<labels>
+				<label mode="any">webmode.label.weburl</label>
+			</labels>
+			<translated>true</translated>
+			<fields>
+				<field>ottcweb:segment</field>
+			</fields>
+			<widgetModes>
+				<mode value="any">#{nxu:test(webModeDocumentActionsBean.supportsWebUrls(currentDocument),
+					layout.mode, 'hidden')}
+				</mode>
+			</widgetModes>
+			<properties mode="any">
+				<property name="template">
+					/widgets/toutatice_weburl_widget.xhtml
+				</property>
+			</properties>
+
+		</widget>
+
+	</extension>
+
+	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="layouts">
+		
+		<layout name="enable_weburl">
+            <templates>
+                <template mode="any">
+                    /layouts/layout_default_template.xhtml
+                </template>
+            </templates>
+            <rows>
+                <row>
+                    <widget>enable_weburl</widget>
+                </row>
+            </rows>
+        </layout>
+
+		<layout name="ottc_weburl">
+			<templates>
+				<template mode="any">
+					/layouts/layout_default_template.xhtml
+				</template>
+			</templates>
+			<rows>
+				<row>
+					<widget>ottc_weburl</widget>
+				</row>
+			</rows>
+		</layout>
+
+	</extension>
+
+</component>
