@@ -12,8 +12,8 @@
 	<version>3.4.0-SNAPSHOT</version>
 
 	<properties>
-		<nuxeo.version>6.0-HF30</nuxeo.version>
-		<ottc.version>3.4.0-SNAPSHOT</ottc.version>
+		<nuxeo.version>6.0-HF34</nuxeo.version>
+		<ottc.version>4.6-SNAPSHOT</ottc.version>
 		<nuxeo.cap.distribution.version>6.0</nuxeo.cap.distribution.version>
 	</properties>
 
