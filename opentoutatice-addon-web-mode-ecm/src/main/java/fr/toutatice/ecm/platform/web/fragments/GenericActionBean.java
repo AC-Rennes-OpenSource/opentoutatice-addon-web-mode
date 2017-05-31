@@ -18,6 +18,8 @@
  */
 package fr.toutatice.ecm.platform.web.fragments;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -25,8 +27,9 @@ import org.jboss.seam.annotations.In;
 import org.nuxeo.ecm.webapp.helpers.ResourcesAccessor;
 
 
-public class GenericActionBean {
+public class GenericActionBean implements Serializable {
 
+    private static final long serialVersionUID = 1941749322010593409L;
 
     @In(create = true)
     protected ResourcesAccessor resourcesAccessor;
