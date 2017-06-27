@@ -3,8 +3,10 @@ package fr.toutatice.ecm.platform.service.fragments.helpers;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Install;
@@ -49,10 +51,20 @@ public class SetListBeanHelper implements Serializable {
             final List<Map<String, Object>> listFgt = (List<Map<String, Object>>) setProperties.get(setXpath);
             final Map<String, Object> currentSetFgt = listFgt.get(index);
             final List<Map<String, Object>> listSetItems = (List<Map<String, Object>>) currentSetFgt.get("setItems");
-            Map<String, Object> newSetItems = new HashMap<String, Object>(2);
-            newSetItems.put(setName, getPageTitle());
             // on supprime le "/nuxeo/web/" devant le webId
             final String pageWebIdCleared = getPageWebId().substring(11);
+
+            // si l'item était déjà présent, on le remplace
+            ListIterator<Map<String, Object>> listSetItemsI = listSetItems.listIterator();
+            while (listSetItemsI.hasNext()) {
+                Map<String, Object> setItem = listSetItemsI.next();
+                if (StringUtils.equals(pageWebIdCleared, (String) setItem.get(setWebId))) {
+                    listSetItemsI.remove();
+                }
+            }
+
+            Map<String, Object> newSetItems = new HashMap<String, Object>(2);
+            newSetItems.put(setName, getPageTitle());
             newSetItems.put(setWebId, pageWebIdCleared);
             listSetItems.add(newSetItems);
             currentDocument.setProperties(schemaName, setProperties);
