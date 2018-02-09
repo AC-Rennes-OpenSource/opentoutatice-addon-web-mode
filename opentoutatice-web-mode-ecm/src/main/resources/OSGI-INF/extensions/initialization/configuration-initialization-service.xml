@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<component
+	name="org.opentoutatice.configuartion.initialzation.service">
+
+	<require>org.nuxeo.ecm.core.repository.RepositoryServiceComponent</require>
+
+<implementation class="fr.toutatice.ecm.platform.web.fragments.initialization.ConfigurationInitializationService" />
+
+  <service>
+    <provide interface="fr.toutatice.ecm.platform.web.fragments.initialization.ConfigurationInitializationService" />
+  </service>
+  
+  <!-- TODO: ext point to define zip path to deploy -->
+
+</component>

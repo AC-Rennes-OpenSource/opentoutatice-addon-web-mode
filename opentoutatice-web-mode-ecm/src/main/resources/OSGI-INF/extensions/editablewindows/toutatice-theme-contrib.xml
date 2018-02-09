@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<component name="org.opentoutatice.core.fragments.ui">
+
+	<require>org.opentoutatice.jsf.ui.portal.views.theme</require>
+	
+	<extension target="org.nuxeo.theme.styling.service" point="pages">
+	
+		<page name="portal-view" charset="utf-8">
+			<defaultFlavor>default</defaultFlavor>
+			<resources appand="true">
+				<resource>generic-properties.js</resource>
+				<resource>images-links.js</resource>
+				<resource>jquery.ui.sortable.js</resource>
+			</resources>
+		</page>
+		
+	</extension>
+
+	<extension target="org.nuxeo.ecm.platform.WebResources"
+		point="resources">
+
+		<resource name="generic-properties.js">
+			<uri>/scripts/generic-properties.js</uri>
+		</resource>
+		<resource name="images-links.js">
+			<uri>/scripts/images-links.js</uri>
+		</resource>
+		<resource name="jquery.ui.sortable.js">
+			<uri>/scripts/jquery/jquery.ui.sortable.js</uri>
+		</resource>
+
+	</extension>
+
+</component>
