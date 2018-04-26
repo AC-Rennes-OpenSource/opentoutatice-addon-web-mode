@@ -6,10 +6,10 @@ package fr.toutatice.ecm.platform.web.mode.listener;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.DocumentModelList;
+import org.nuxeo.ecm.core.api.NuxeoException;
 import org.nuxeo.ecm.core.api.event.DocumentEventTypes;
 import org.nuxeo.ecm.core.api.impl.DocumentModelListImpl;
 import org.nuxeo.ecm.core.event.Event;
@@ -41,7 +41,7 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
             + "and ecm:isVersion = 0 and ecm:isProxy = 0 and ecm:currentLifeCycleState <> 'deleted'";
 
     @Override
-    public void handleEvent(EventBundle events) throws ClientException {
+    public void handleEvent(EventBundle events) throws NuxeoException {
 
         for (Event event : events) {
 

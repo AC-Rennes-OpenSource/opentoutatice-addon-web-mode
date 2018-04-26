@@ -23,8 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
+import org.nuxeo.ecm.core.api.NuxeoException;
 
 import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
 import fr.toutatice.ecm.platform.service.fragments.configuration.ConfigurationBeanHelper;
@@ -99,7 +99,7 @@ public class PortletFragment implements EditableWindow {
             }
 
 
-        } catch (ClientException e) {
+        } catch (NuxeoException e) {
             throw new EwServiceException(e);
         }
         return uri;

@@ -13,8 +13,8 @@
  *
  *
  * Contributors:
- *   mberhaut1
- *    
+ * mberhaut1
+ * 
  */
 package fr.toutatice.ecm.platform.service.editablewindows;
 
@@ -36,7 +36,7 @@ public class EwDescriptor implements Serializable {
     protected EditableWindow instance;
 
     @XNode("@class")
-    protected Class ew;
+    protected Class<?> ew;
 
     @XNode("@code")
     protected String code;
@@ -47,7 +47,7 @@ public class EwDescriptor implements Serializable {
     @XNode("@title")
     protected String title;
 
-    public void initFragment() throws Exception {
+    public void initFragment() throws InstantiationException, IllegalAccessException {
         instance = (EditableWindow) ew.newInstance();
     }
 
@@ -82,8 +82,6 @@ public class EwDescriptor implements Serializable {
     public String getTitle() {
         return title;
     }
-
-
 
 
 }

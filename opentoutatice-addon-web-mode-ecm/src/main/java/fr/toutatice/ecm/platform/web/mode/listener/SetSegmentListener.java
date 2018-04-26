@@ -4,9 +4,9 @@
 package fr.toutatice.ecm.platform.web.mode.listener;
 
 import org.apache.commons.lang.BooleanUtils;
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
+import org.nuxeo.ecm.core.api.NuxeoException;
 import org.nuxeo.ecm.core.api.event.DocumentEventTypes;
 import org.nuxeo.ecm.core.api.model.Property;
 import org.nuxeo.ecm.core.event.Event;
@@ -31,7 +31,7 @@ import fr.toutatice.ecm.platform.web.mode.service.SegmentService;
 public class SetSegmentListener implements EventListener {
 
     @Override
-    public void handleEvent(Event event) throws ClientException {
+    public void handleEvent(Event event) throws NuxeoException {
         SegmentService segmentService = (SegmentService) Framework.getService(SegmentService.class);
         
         DocumentEventContext evtCtx = (DocumentEventContext) event.getContext();

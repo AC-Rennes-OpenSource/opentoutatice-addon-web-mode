@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <component name="org.opentoutatice.core.fragments.ui">
 
-	<require>org.opentoutatice.jsf.ui.portal.views.theme</require>
+	<require>org.opentoutatice.jsf.ui.portalview.theme</require>
 	
 	<extension target="org.nuxeo.theme.styling.service" point="pages">
 	
