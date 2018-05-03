@@ -4,30 +4,20 @@
 package fr.toutatice.ecm.platform.web.mode.bean;
 
 import java.io.Serializable;
-import java.util.Iterator;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Install;
 import org.jboss.seam.annotations.Name;
-import org.jboss.seam.annotations.Observer;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.web.RequestParameter;
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
 import org.nuxeo.ecm.core.api.DocumentModel;
-import org.nuxeo.ecm.core.api.DocumentModelList;
 import org.nuxeo.ecm.platform.ui.web.api.NavigationContext;
-import org.nuxeo.ecm.webapp.helpers.EventNames;
 
 import fr.toutatice.ecm.platform.core.constants.ExtendedSeamPrecedence;
-import fr.toutatice.ecm.platform.core.constants.ToutaticeGlobalConst;
 import fr.toutatice.ecm.platform.core.constants.ToutaticeNuxeoStudioConst;
-import fr.toutatice.ecm.platform.core.helper.ToutaticeDocumentHelper;
 import fr.toutatice.ecm.platform.web.document.ToutaticeDocumentActionsBean;
-import fr.toutatice.ecm.platform.web.mode.constants.WebModeConstants;
 import fr.toutatice.ecm.platform.web.mode.service.SegmentService;
 
 /**

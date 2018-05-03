@@ -1,0 +1,86 @@
+<ui:composition template="/pages/portal-views/pv_page.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:nxl="http://nuxeo.org/nxforms/layout"
+	xmlns:nxr="http://nuxeo.org/nxweb/resources"
+	xmlns:nxu="http://nuxeo.org/nxweb/util"
+	xmlns:nxh="http://nuxeo.org/nxweb/html">
+
+	<ui:define name="pv body">
+
+		<div class="container">
+			<div class="row">
+				<div class="form-group">
+
+					<h3>
+						<c:if test="#{fragmentBean.descriptor != null}">
+							<h:outputFormat
+								value="#{messages[fragmentBean.descriptor.title]}" />
+						</c:if>
+						<c:if test="#{fragmentBean.descriptor == null}">
+							<h:outputFormat
+								value="#{messages[fragmentBean.descriptor.title]}" />
+						</c:if>
+
+					</h3>
+				</div>
+
+				<ui:include src="/incl/pv_message_banner.xhtml" />
+
+				<h:form id="fragments_edit_form" class="form form-horizontal"
+					role="form">
+
+					<!-- Layout propriétés génériques -->
+					<nxl:layout name="generic_fragment_layout"
+						value="#{currentDocument}" mode="edit" />
+
+					<!-- Layout propriétés spécifiques -->
+					<c:if test="#{fragmentBean.descriptor != null}">
+						<nxl:layout name="#{fragmentBean.descriptor.layout}"
+							value="#{currentDocument}" mode="edit" />
+					</c:if>
+
+					<h:inputHidden name="fromUrl" value="#{pageBean.fromUrl}" />
+
+					<nav class="navbar navbar-default navbar-fixed-bottom">
+						<div class="container-fluid">
+							<div class="col-sm-offset-2">
+								<nxu:set var="actions"
+									value="#{webActions.getActionsList('HTML_EDIT_FRAGMENT')}"
+									cache="true">
+
+									<div class="savePanelAction">
+										<c:forEach var="action" items="#{actions}">
+
+											<nxh:commandButton action="#{action.getLink()}"
+												immediate="#{action.immediate}" onclick="#{action.confirm}"
+												id="footer_edit_doc_#{action.id}"
+												value="#{messages[action.label]}"
+												class="btn btn-primary navbar-btn">
+											</nxh:commandButton>
+
+
+										</c:forEach>
+
+										<h:commandLink action="#{fragmentBean.cancelCreation}"
+											id="footer_edit_doc_cancel" immediate="true"
+											value="#{messages['command.cancel']}"
+											class="btn btn-default navbar-btn"
+											rendered="#{fragmentBean.canCancel}">
+										</h:commandLink>
+
+									</div>
+
+								</nxu:set>
+							</div>
+						</div>
+					</nav>
+
+				</h:form>
+				<div class="pv-footer"></div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

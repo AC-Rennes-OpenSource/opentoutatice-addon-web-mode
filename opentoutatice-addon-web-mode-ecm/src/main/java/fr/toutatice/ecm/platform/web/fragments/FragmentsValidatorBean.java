@@ -20,7 +20,6 @@
 package fr.toutatice.ecm.platform.web.fragments;
 
 import java.io.Serializable;
-import java.net.MalformedURLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

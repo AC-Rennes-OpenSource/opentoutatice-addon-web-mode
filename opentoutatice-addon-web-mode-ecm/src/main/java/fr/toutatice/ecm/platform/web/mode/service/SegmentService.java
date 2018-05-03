@@ -8,15 +8,12 @@ import java.util.Iterator;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.nuxeo.common.utils.IdUtils;
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.CoreSession;
-import org.nuxeo.ecm.core.api.DocumentException;
 import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.ecm.core.api.DocumentModelList;
-import org.nuxeo.ecm.core.api.UnrestrictedSessionRunner;
+import org.nuxeo.ecm.core.api.NuxeoException;
 import org.nuxeo.runtime.model.DefaultComponent;
 
-import fr.toutatice.ecm.platform.core.constants.ToutaticeNuxeoStudioConst;
 import fr.toutatice.ecm.platform.core.helper.ToutaticeDocumentHelper;
 import fr.toutatice.ecm.platform.web.mode.constants.WebModeConstants;
 
@@ -76,7 +73,7 @@ public class SegmentService extends DefaultComponent {
      * 
      * @param document
      * @return a unique value of segment property for given document.
-     * @throws DocumentException
+     * @throws NuxeoException
      */
     // FIXME: try to use sequencer (cf AbstractUIDGenerator)
     public String createSegment(CoreSession session, DocumentModel document) {
@@ -119,7 +116,7 @@ public class SegmentService extends DefaultComponent {
      * 
      * @param document
      * @return segment value based on formatted document title.
-     * @throws DocumentException
+     * @throws NuxeoException
      */
     protected String generateSegment(DocumentModel document) {
         String title = document.getTitle();

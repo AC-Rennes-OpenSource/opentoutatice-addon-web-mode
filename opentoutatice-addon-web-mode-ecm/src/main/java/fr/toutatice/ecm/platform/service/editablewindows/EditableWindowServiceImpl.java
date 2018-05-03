@@ -13,8 +13,8 @@
  *
  *
  * Contributors:
- *   mberhaut1
- *    
+ * mberhaut1
+ * 
  */
 package fr.toutatice.ecm.platform.service.editablewindows;
 
@@ -27,8 +27,8 @@ import java.util.Map.Entry;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
+import org.nuxeo.ecm.core.api.NuxeoException;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
 
@@ -51,24 +51,22 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
 
 
     @Override
-    public void registerContribution(Object contribution, String extensionPoint, ComponentInstance contributor) throws Exception {
-
+    public void registerContribution(Object contribution, String extensionPoint, ComponentInstance contributor) {
         EwDescriptor contribDescriptor = (EwDescriptor) contribution;
-
-        contribDescriptor.initFragment();
-
-        addEwType(contribDescriptor);
+        try {
+            contribDescriptor.initFragment();
+            addEwType(contribDescriptor);
+        } catch (InstantiationException | IllegalAccessException e) {
+            log.error("Unable to instanciate fragment '" + contribDescriptor.getTitle() + "'", e);
+        }
     }
 
 
     @Override
-    public void unregisterContribution(Object contribution, String extensionPoint, ComponentInstance contributor) throws Exception {
-
+    public void unregisterContribution(Object contribution, String extensionPoint, ComponentInstance contributor) {
         EwDescriptor contribDescriptor = (EwDescriptor) contribution;
-
         removeEwType(contribDescriptor);
     }
-
 
 
     private void addEwType(EwDescriptor contribution) {
@@ -85,7 +83,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
 
     }
 
-	@Override
+    @Override
     public Map.Entry<EwDescriptor, EditableWindow> findByCode(String code) throws EwServiceException {
         for (Map.Entry<EwDescriptor, EditableWindow> entry : ewMap.entrySet()) {
             if (entry.getKey().getCode().equals(code)) {
@@ -102,7 +100,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
      * @return the category
      */
     @Override
-	public Entry<EwDescriptor, EditableWindow> getEwEntry(DocumentModel doc, String uri) throws EwServiceException {
+    public Entry<EwDescriptor, EditableWindow> getEwEntry(DocumentModel doc, String uri) throws EwServiceException {
 
         String category = null;
         Map<String, Object> properties;
@@ -126,7 +124,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
                     }
                 }
             }
-        } catch (ClientException e) {
+        } catch (NuxeoException e) {
             throw new EwServiceException(e);
         }
 
@@ -152,7 +150,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
      * @return the new id (timestamp)
      */
     @Override
-	public String prepareCreation(DocumentModel doc, EditableWindow specific, String category, String region, String belowUri, String code2)
+    public String prepareCreation(DocumentModel doc, EditableWindow specific, String category, String region, String belowUri, String code2)
             throws EwServiceException {
 
         String uri = null;
@@ -212,7 +210,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
 
                 newEntry.put("title", "Nouveau fragment");
                 newEntry.put("hideTitle", Boolean.FALSE.toString());
-				newEntry.put("collapsed", Boolean.FALSE.toString());
+                newEntry.put("collapsed", Boolean.FALSE.toString());
                 newEntry.put("style", "");
 
                 listeEw.add(newEntry);
@@ -220,7 +218,7 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
                 doc.setProperties(SCHEMA, properties);
 
             }
-        } catch (ClientException e) {
+        } catch (NuxeoException e) {
             throw new EwServiceException(e);
         }
 
@@ -228,7 +226,6 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
 
         return uri;
     }
-
 
 
 }

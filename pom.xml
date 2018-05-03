@@ -8,40 +8,46 @@
 	<packaging>pom</packaging>
 	<description>Addon CMS for websites</description>
 	<name>opentoutatice-web-mode-parent</name>
-	<version>4.7-SNAPSHOT</version>
+	<version>5.0-SNAPSHOT</version>
 
 	<properties>
-		<nuxeo.version>6.0-HF44</nuxeo.version>
-		<nuxeo.cap.version>6.0</nuxeo.cap.version>
-		<nuxeo.opentoutatice.version>4.7</nuxeo.opentoutatice.version>
+		<nuxeo.version>8.0-HF28</nuxeo.version>
+		<!-- <nuxeo.cap.version>6.0</nuxeo.cap.version> -->
+		<nuxeo.opentoutatice.version>5.0-SNAPSHOT</nuxeo.opentoutatice.version>
 	</properties>
 
 	<modules>
 		<module>opentoutatice-addon-web-mode-ecm</module>
-		<module>opentoutatice-addon-web-mode-marketplace</module>
+		<!-- <module>opentoutatice-addon-web-mode-marketplace</module> -->
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
-			 <dependency>
+			<!-- <dependency>
 				<groupId>org.nuxeo.ecm.distribution</groupId>
 				<artifactId>nuxeo-distribution-cap</artifactId>
 				<version>${nuxeo.version}</version>
 				<type>pom</type>
-			</dependency>
-
-			<dependency>
-				<groupId>org.nuxeo.ecm.distribution</groupId>
-				<artifactId>nuxeo-distribution-cap</artifactId>
-				<version>${nuxeo.version}</version>
-				<type>pom</type>
-			</dependency>
+			</dependency> -->
 
 			<dependency>
 				<groupId>opentoutatice-ecm.platform</groupId>
 				<artifactId>opentoutatice-ecm-platform-web</artifactId>
 				<version>${nuxeo.opentoutatice.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>opentoutatice-ecm.platform</groupId>
+				<artifactId>opentoutatice-jsf-portal-views</artifactId>
+				<version>${nuxeo.opentoutatice.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>opentoutatice-ecm.platform</groupId>
+				<artifactId>opentoutatice-jsf-tinymce</artifactId>
+				<version>${nuxeo.opentoutatice.version}</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
@@ -53,8 +59,8 @@
 				<version>3.1</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -110,19 +116,5 @@
 		</snapshotRepository>
 	</distributionManagement>
 
-    <profiles>
-    	<profile>
-    		<id>ci</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<distributionManagement>
-    			<snapshotRepository>
-            		<id>galactica-ci-snapshots</id>
-            		<url>http://nexus:8081/repository/ci-snapshots</url>
-        		</snapshotRepository>
-    		</distributionManagement>
-    	</profile>
-    </profiles>
 </project>
 

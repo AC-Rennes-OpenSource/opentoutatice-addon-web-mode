@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
+import org.nuxeo.ecm.core.api.NuxeoException;
 
 import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
 
@@ -46,7 +46,7 @@ public class ZoomFragment implements EditableWindow {
                 doc.setProperties(ZOOM_SCHEMA, frags);
             }
 
-		} catch (ClientException e) {
+		} catch (NuxeoException e) {
             throw new EwServiceException(e);
 		}
 		return uri;

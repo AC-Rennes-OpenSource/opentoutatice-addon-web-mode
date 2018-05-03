@@ -2,6 +2,7 @@
 <component name="fr.toutatice.ecm.platform.webmode.widgets">
 
 	<require>org.nuxeo.ecm.platform.forms.layout.WebLayoutManager</require>
+	<require>org.opentoutatice.jsf.ui.tinymce.widgets</require>
 
 	<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
 		point="widgets">
@@ -149,6 +150,43 @@
                 <property name="currentDocument">value</property>
             </properties>
         </widget>
+	</extension>
+	
+		<extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+		point="widgettypes">
+	
+	<widgetType name="ottc_minimal_htmltext">
+			<configuration>
+				<title>HTML minimal text</title>
+				<description>
+					<p>Only bold, italic and underline features.</p>
+				</description>
+				<categories>
+					<category>document</category>
+				</categories>
+				<supportedModes>
+					<mode>edit</mode>
+					<mode>view</mode>
+				</supportedModes>
+				<fields>
+					<list>false</list>
+					<complex>false</complex>
+					<supportedTypes>
+						<type>string</type>
+					</supportedTypes>
+				</fields>
+				<properties>
+					<defaultValues mode="any">
+						<property name="height">150</property>
+						<property name="configuration">{"theme" : "modern","plugins" : "","theme_advanced_resizing" : true,"inline_styles" : false,"content_css": "/nuxeo/css/portal-view.min.css? + new Date().getTime()","valid_elements" : "p,br,strong/b,em,u,span[style:text-decoration: underline;]","toolbar1" : "bold italic underline","toolbar2":"","toolbar3":"","menubar": false,"statusbar": false}</property>
+					</defaultValues>
+				</properties>
+			</configuration>
+			<handler-class>
+				org.nuxeo.ecm.platform.forms.layout.facelets.plugins.HtmlTextWidgetTypeHandler
+			</handler-class>
+		</widgetType>
+		
 	</extension>
 
 </component>
