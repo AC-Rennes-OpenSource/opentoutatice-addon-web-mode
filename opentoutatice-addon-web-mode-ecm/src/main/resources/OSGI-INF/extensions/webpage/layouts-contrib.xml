@@ -209,9 +209,6 @@
 					<widget>osivia_widget_content</widget>
 				</row>
 				<row>
-					<widget>osivia_widget_picture</widget>
-				</row>
-				<row>
 					<widget>web_presentation</widget>
 				</row>
 			</rows>
