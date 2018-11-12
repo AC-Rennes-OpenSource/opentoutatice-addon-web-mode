@@ -85,6 +85,10 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
 
     }
 
+    public void updateEwType(EwDescriptor contribution) {
+        ewMap.put(contribution, contribution.getInstance());
+    }
+
 	@Override
     public Map.Entry<EwDescriptor, EditableWindow> findByCode(String code) throws EwServiceException {
         for (Map.Entry<EwDescriptor, EditableWindow> entry : ewMap.entrySet()) {

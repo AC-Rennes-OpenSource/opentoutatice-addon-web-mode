@@ -26,6 +26,9 @@ import java.util.Map;
 import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
 
+import com.phloc.commons.collections.pair.IPair;
+import com.phloc.commons.collections.pair.Pair;
+
 import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
 import fr.toutatice.ecm.platform.service.fragments.configuration.ConfigurationBeanHelper;
 import fr.toutatice.ecm.platform.service.fragments.configuration.ConfigurationConstants;
@@ -35,12 +38,15 @@ import fr.toutatice.ecm.platform.service.fragments.configuration.ConfigurationCo
  * Instancie un portlet fragment
  * 
  */
-public class FragmentEditableWindow implements EditableWindow {
+public class FragmentEditableWindow implements SpecificEditableWindow {
 
     private static final String SCHEMA = "ew_fragments";
-
     private static final String FRAGMENT_PROPERTIES = "ew_fragments_properties";
 
+    @Override
+    public IPair<String, String> getXPathInfosOfCode2() {
+        return Pair.create("portalFragmentName", "ewf:ewFragmentList");
+    }
 
     @Override
     public String prepareCreation(DocumentModel doc, String uri, String region, String belowUri, String code2) throws EwServiceException {

@@ -47,6 +47,8 @@ public class EwDescriptor implements Serializable {
     @XNode("@title")
     protected String title;
 
+    private String configurationTitle;
+
     public void initFragment() throws Exception {
         instance = (EditableWindow) ew.newInstance();
     }
@@ -83,7 +85,18 @@ public class EwDescriptor implements Serializable {
         return title;
     }
 
+    /**
+     * @return the configTitle
+     */
+    public String getConfigurationTitle() {
+        return configurationTitle;
+    }
 
-
+    /**
+     * @param configTitle the configTitle to set
+     */
+    public void setConfigurationTitle(String configTitle) {
+        this.configurationTitle = configTitle;
+    }
 
 }

@@ -55,13 +55,7 @@
 			<div class="form-group">
 
 				<h3>
-					<c:if test="#{fragmentBean.descriptor != null}">
-						<h:outputFormat value="#{messages[fragmentBean.descriptor.title]}" />
-					</c:if>
-					<c:if test="#{fragmentBean.descriptor == null}">
-						<h:outputFormat value="#{messages[fragmentBean.descriptor.title]}" />
-					</c:if>
-
+					<h:outputFormat value="#{messages[fragmentBean.descriptor.configurationTitle]}" />
 				</h3>
 			</div>
 

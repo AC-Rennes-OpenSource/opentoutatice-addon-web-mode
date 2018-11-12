@@ -46,7 +46,7 @@
                     <c:forEach items="#{config.fragmentTypes}" var="conf">
 
                         <h:commandLink
-                            action="#{fragmentBean.dispatchCreation(conf.wconf.code, conf.wconf.code2)}"
+                            action="#{fragmentBean.dispatchCreation(conf)}"
                             class="list-group-item">
 
                             <c:choose>
