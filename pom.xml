@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -8,12 +9,12 @@
 	<packaging>pom</packaging>
 	<description>Addon CMS for websites</description>
 	<name>opentoutatice-web-mode-parent</name>
-	<version>4.6</version>
+	<version>4.6-SNAPSHOT</version>
 
 	<properties>
-		<nuxeo.version>6.0-HF37</nuxeo.version>
+		<nuxeo.version>6.0-HF42</nuxeo.version>
 		<nuxeo.cap.version>6.0</nuxeo.cap.version>
-		<nuxeo.opentoutatice.version>4.6</nuxeo.opentoutatice.version>
+		<nuxeo.opentoutatice.version>4.6-SNAPSHOT</nuxeo.opentoutatice.version>
 	</properties>
 
 	<modules>
@@ -23,7 +24,7 @@
 
 	<dependencyManagement>
 		<dependencies>
-			 <dependency>
+			<dependency>
 				<groupId>org.nuxeo.ecm.distribution</groupId>
 				<artifactId>nuxeo-distribution-cap</artifactId>
 				<version>${nuxeo.version}</version>
@@ -96,17 +97,20 @@
 	</build>
 
 	<scm>
-		<developerConnection>scm:svn:http://projet.toutatice.fr/repos/toutatice-ecm/opentoutatice-addons/opentoutatice-web-mode/tags/4.6</developerConnection>
+		<url>https://github.com/osivia/opentoutatice-addon-web-mode</url>
+		<connection>scm:git:ssh://git@github.com/osivia/opentoutatice-addon-web-mode.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/osivia/opentoutatice-addon-web-mode.git</developerConnection>
+		<tag>4.6</tag>
 	</scm>
 
 	<distributionManagement>
 		<repository>
-			<id>toutatice-releases</id>
-			<url>http://projet.toutatice.fr/nexus/content/repositories/toutatice-releases</url>
+			<id>osivia-releases</id>
+			<url>http://www.osivia.org/nexus/content/repositories/osivia-releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>toutatice-snapshots</id>
-			<url>http://projet.toutatice.fr/nexus/content/repositories/toutatice-snapshots</url>
+			<id>osivia-snapshots</id>
+			<url>http://www.osivia.org/nexus/content/repositories/osivia-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
