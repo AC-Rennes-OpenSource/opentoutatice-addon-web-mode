@@ -114,6 +114,11 @@
 				<field>ttc:vignette</field>
 				<field>ttc:vignette/filename</field>
 			</fields>
+			<widgetModes>
+				<mode value="any">#{nxu:test(config.getWebsiteParam("enableThumbnail"), layout.mode,
+					'hidden')}
+				</mode>
+			</widgetModes>
 		</widget>
 		
 		<!-- Added just for Help label... -->
@@ -202,9 +207,6 @@
 				</row>
 				<row>
 					<widget>osivia_widget_content</widget>
-				</row>
-				<row>
-					<widget>osivia_widget_picture</widget>
 				</row>
 				<row>
 					<widget>web_presentation</widget>
