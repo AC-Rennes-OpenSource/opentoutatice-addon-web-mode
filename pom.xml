@@ -11,18 +11,19 @@
 	<version>4.7-SNAPSHOT</version>
 
 	<properties>
-		<nuxeo.version>6.0-HF45</nuxeo.version>
-		<nuxeo.cap.version>6.0</nuxeo.cap.version>
-		<nuxeo.opentoutatice.version>4.7.9</nuxeo.opentoutatice.version>
+		<nuxeo.version>6.1.1</nuxeo.version>
+		<!--  <nuxeo.cap.version>6.0</nuxeo.cap.version>-->
+		<nuxeo.opentoutatice.version>4.7.17</nuxeo.opentoutatice.version>
 	</properties>
 
 	<modules>
 		<module>opentoutatice-addon-web-mode-ecm</module>
-		<module>opentoutatice-addon-web-mode-marketplace</module>
+		<!-- <module>opentoutatice-addon-web-mode-marketplace</module> -->
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
+		      <!-- 
 			 <dependency>
 				<groupId>org.nuxeo.ecm.distribution</groupId>
 				<artifactId>nuxeo-distribution-cap</artifactId>
@@ -36,7 +37,7 @@
 				<version>${nuxeo.version}</version>
 				<type>pom</type>
 			</dependency>
-
+ -->
 			<dependency>
 				<groupId>opentoutatice-ecm.platform</groupId>
 				<artifactId>opentoutatice-ecm-platform-web</artifactId>
