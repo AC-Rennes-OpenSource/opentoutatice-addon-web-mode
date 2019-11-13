@@ -25,7 +25,6 @@ import fr.toutatice.ecm.platform.core.helper.ToutaticeSilentProcessRunnerHelper;
 import fr.toutatice.ecm.platform.web.mode.constants.WebModeConstants;
 import fr.toutatice.ecm.platform.web.mode.service.SegmentService;
 
-
 /**
  * @author david
  *
@@ -37,7 +36,7 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
             + "and ecm:isVersion = 0 and ecm:isProxy = 0 and ecm:currentLifeCycleState <> 'deleted'";
 
     /** Leafs query which can have segments. */
-    public static final String LEAFS_WITH_SEGMENTS = "select * from Document where ttc:domainID = '%s' and ecm:mixinType = '%s' "
+    public static final String LEAFS_WITH_SEGMENTS = "select * from Document where ecm:ancestorId = '%s' and ecm:mixinType = '%s' "
             + "and ecm:isVersion = 0 and ecm:isProxy = 0 and ecm:currentLifeCycleState <> 'deleted'";
 
     @Override
@@ -63,21 +62,28 @@ public class BulkSetSegmentsListener implements PostCommitEventListener {
                             DocumentModelList authorizedDocs = new DocumentModelListImpl();
                             authorizedDocs.add(sourceDocument);
 
-                            String domainId = (String) sourceDocument.getPropertyValue(ToutaticeNuxeoStudioConst.CST_DOC_XPATH_TOUTATICE_DOMAIN_ID);
-                            String leafQuery = String.format(LEAFS_WITH_SEGMENTS, domainId, WebModeConstants.HAS_WEB_URL_FACET);
+                            DocumentModel domain = ToutaticeDocumentHelper.getDomain(session, sourceDocument, true);
+                            if (domain != null) {
+                                String leafQuery = String.format(LEAFS_WITH_SEGMENTS, domain.getId(), WebModeConstants.HAS_WEB_URL_FACET);
 
-                            DocumentModelList leafsDocuments = session.query(leafQuery);
-                            if (CollectionUtils.isNotEmpty(leafsDocuments)) {
-                                authorizedDocs.addAll(leafsDocuments);
-                            }
+                                DocumentModelList leafsDocuments = session.query(leafQuery);
+                                if (CollectionUtils.isNotEmpty(leafsDocuments)) {
+                                    authorizedDocs.addAll(leafsDocuments);
+                                }
 
-                            for (DocumentModel doc : authorizedDocs) {
-                                if (segmentService.supportsWebUrls(session, doc)) {
-                                    setSegments(session, segmentService, doc);
+                                for (DocumentModel doc : authorizedDocs) {
+                                    if (segmentService.supportsWebUrls(session, doc)) {
+                                        setSegments(session, segmentService, doc);
+                                    }
+                                }
+
+                                session.save();
+
+                            } else {
+                                if (sourceDocument != null) {
+                                    throw new ClientException(String.format("No Domain found from document [%s] ", sourceDocument.getPathAsString()));
                                 }
                             }
-
-                            session.save();
 
                         }
                     }

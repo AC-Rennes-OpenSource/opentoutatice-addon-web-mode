@@ -217,7 +217,7 @@ public class FragmentActionBean extends GenericActionBean {
                 this.descriptor = fragmentInfos.getKey();
                 this.descriptor.setConfigurationTitle(configTitle);
 
-                // TODO & FIXME: add (dynamic) code2 on descriptor to be ables to store them in ewMap
+                // TODO & FIXME: add (dynamic) code2 on descriptor to be able to store them in ewMap
                 // of EditableWindowService with given title (need code and code2 to be uniquely find):
                 // Store updated descriptor in EditableWindowService
                 // ((EditableWindowServiceImpl) getFragmentService()).updateEwType(this.descriptor);
