@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<component name="fr.toutatice.ecm.platform.webmode.automation"
+	version="1.0">
+
+	<extension
+		target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
+		point="operations">
+
+		<operation
+			class="fr.toutatice.ecm.platform.service.editablewindows.automation.DuplicateEditableWindow" />
+
+	</extension>
+
+</component>

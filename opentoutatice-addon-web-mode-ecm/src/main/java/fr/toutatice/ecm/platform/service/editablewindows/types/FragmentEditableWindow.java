@@ -18,10 +18,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.nuxeo.ecm.core.api.ClientException;
 import org.nuxeo.ecm.core.api.DocumentModel;
@@ -38,9 +35,10 @@ import fr.toutatice.ecm.platform.service.fragments.configuration.ConfigurationCo
  * Instancie un portlet fragment
  * 
  */
-public class FragmentEditableWindow implements SpecificEditableWindow {
+public class FragmentEditableWindow extends AbstractEditableWindow implements SpecificEditableWindow {
 
     private static final String SCHEMA = "ew_fragments";
+
     private static final String FRAGMENT_PROPERTIES = "ew_fragments_properties";
 
     @Override
@@ -110,5 +108,17 @@ public class FragmentEditableWindow implements SpecificEditableWindow {
         }
         return uri;
     }
+
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(SCHEMA);
+		specifcSchemas.add(FRAGMENT_PROPERTIES);
+		return specifcSchemas;
+	}
+
+
 
 }

@@ -13,7 +13,7 @@
  *
  *
  * Contributors:
- *   mberhaut1
+ *   lbillon
  *    
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
@@ -29,26 +29,18 @@ import org.nuxeo.ecm.core.api.DocumentModel;
 
 import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
 
-/**
- * 
- * Service dédié aux listes
- * 
- */
-public class LinksFragment extends AbstractEditableWindow {
+public class PictureFragment extends AbstractEditableWindow {
 
-	private static final String LINKS_FRAG_SCHEMA1 = "links_fragments";
-	private static final String LINKS_SCHEMA = "links";
+	private static final String PICTURE_SCHEMA = "picture_fragments";
 
 	@Override
 	public String prepareCreation(DocumentModel doc, String uri, String region,
 			String belowUri, String code2) throws EwServiceException {
 		Map<String, Object> properties;
-		Map<String, Object> links;
 		try {
+			properties = doc.getProperties(PICTURE_SCHEMA);
 
-			links = doc.getProperties(LINKS_SCHEMA);
-
-			Collection<Object> values = links.values();
+			Collection<Object> values = properties.values();
 
 			// Une seule liste dans ce schéma
 			Object liste = values.iterator().next();
@@ -57,51 +49,12 @@ public class LinksFragment extends AbstractEditableWindow {
 				List<Map<String, String>> listeData = (List<Map<String, String>>) liste;
 
 				Map<String, String> newEntry = new HashMap<String, String>();
-				newEntry.put("refURI", uri);
-
-				listeData.add(newEntry);
-
-				Map<String, String> newEntry1 = new HashMap<String, String>();
-				newEntry1.put("refURI", uri);
-
-				listeData.add(newEntry1);
-
-				Map<String, String> newEntry2 = new HashMap<String, String>();
-				newEntry2.put("refURI", uri);
-
-				listeData.add(newEntry2);
-
-				Map<String, String> newEntry3 = new HashMap<String, String>();
-				newEntry3.put("refURI", uri);
-
-				listeData.add(newEntry3);
-
-				Map<String, String> newEntry4 = new HashMap<String, String>();
-				newEntry4.put("refURI", uri);
-
-				listeData.add(newEntry4);
-
-				doc.setProperties(LINKS_SCHEMA, links);
-			}
-
-			properties = doc.getProperties(LINKS_FRAG_SCHEMA1);
-
-			
-			values = properties.values();
-
-			// Une seule liste dans ce schéma
-			liste = values.iterator().next();
-
-			if (liste instanceof List) {
-				List<Map<String, String>> listeData = (List<Map<String, String>>) liste;
-
-				Map<String, String> newEntry = new HashMap<String, String>();
 
 				newEntry.put("refURI", uri);
 
 				listeData.add(newEntry);
 
-				doc.setProperties(LINKS_FRAG_SCHEMA1, properties);
+				doc.setProperties(PICTURE_SCHEMA, properties);
 			}
 
 		} catch (ClientException e) {
@@ -109,13 +62,12 @@ public class LinksFragment extends AbstractEditableWindow {
 		}
 		return uri;
 	}
-
+	
 	@Override
 	public List<String> getSpecifcSchemas() {
 		
 		List<String> specifcSchemas = new ArrayList<String>();
-		specifcSchemas.add(LINKS_SCHEMA);
-		specifcSchemas.add(LINKS_FRAG_SCHEMA1);
+		specifcSchemas.add(PICTURE_SCHEMA);
 		return specifcSchemas;
 	}
 

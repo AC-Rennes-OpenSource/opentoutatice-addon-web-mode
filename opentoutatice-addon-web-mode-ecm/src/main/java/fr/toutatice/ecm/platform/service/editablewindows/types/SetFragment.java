@@ -1,5 +1,6 @@
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import org.nuxeo.ecm.core.api.DocumentModel;
 import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
 
 
-public class SetFragment implements EditableWindow {
+public class SetFragment extends AbstractEditableWindow {
 
     private static final String SET_SCHEMA = "set_fragments";
 
@@ -44,5 +45,12 @@ public class SetFragment implements EditableWindow {
         }
         return uri;
     }
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(SET_SCHEMA);
+		return specifcSchemas;
+	}
 
 }

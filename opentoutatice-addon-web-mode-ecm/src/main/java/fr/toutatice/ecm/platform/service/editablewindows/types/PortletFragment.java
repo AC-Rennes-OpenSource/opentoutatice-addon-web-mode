@@ -18,6 +18,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -38,9 +39,10 @@ import fr.toutatice.ecm.platform.service.fragments.configuration.ConfigurationCo
  * Service dédié aux listes
  * 
  */
-public class PortletFragment implements SpecificEditableWindow {
+public class PortletFragment extends AbstractEditableWindow implements SpecificEditableWindow {
 
     private static final String PORTLET_SCHEMA = "portlet_fragments";
+
     private static final String PORTLET_PROPERTIES = "portlet_properties";
 
     @Override
@@ -111,5 +113,13 @@ public class PortletFragment implements SpecificEditableWindow {
         return uri;
     }
 
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(PORTLET_SCHEMA);
+		specifcSchemas.add(PORTLET_PROPERTIES);
+		return specifcSchemas;
+	}
 
 }

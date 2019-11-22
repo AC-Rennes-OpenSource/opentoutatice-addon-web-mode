@@ -19,6 +19,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
  * @author david
  *
  */
-public class RssFragment implements EditableWindow {
+public class RssFragment extends AbstractEditableWindow  {
 
 	public static final String RSS_SCHEMA = "rss_fragments";
 
@@ -70,6 +71,13 @@ public class RssFragment implements EditableWindow {
 			throw new EwServiceException(e);
 		}
 		return uri;
+	}
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(RSS_SCHEMA);
+		return specifcSchemas;
 	}
 
 }

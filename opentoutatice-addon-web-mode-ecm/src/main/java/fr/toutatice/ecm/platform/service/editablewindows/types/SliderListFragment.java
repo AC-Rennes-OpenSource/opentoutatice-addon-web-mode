@@ -19,6 +19,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +38,7 @@ import fr.toutatice.ecm.platform.service.fragments.helpers.SliderListBeanHelper;
  * @author david chevrier.
  *
  */
-public class SliderListFragment implements EditableWindow {
+public class SliderListFragment extends AbstractEditableWindow {
     
     public static final String SLIDER_LIST_SCHEMA = "slider_list_fragments";
     public static final String SLIDER_LIST_XPATH = "sldlistfgt:sliderListFragment";
@@ -89,5 +90,12 @@ public class SliderListFragment implements EditableWindow {
     return uri;
         
     }
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(SLIDER_LIST_SCHEMA);
+		return specifcSchemas;
+	}
     
 }
