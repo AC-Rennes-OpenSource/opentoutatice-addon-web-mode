@@ -32,6 +32,7 @@ import org.nuxeo.ecm.core.api.DocumentModel;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
 
+import fr.toutatice.ecm.platform.service.editablewindows.types.AbstractEditableWindow;
 import fr.toutatice.ecm.platform.service.editablewindows.types.EditableWindow;
 
 /**
@@ -230,5 +231,90 @@ public class EditableWindowServiceImpl extends DefaultComponent implements Edita
     }
 
 
+    @Override
+	public String duplicate(DocumentModel doc, String fromUri)
+            throws EwServiceException {
+    	
+        String newUri = null;
+
+        Map<String, Object> properties;
+        
+        Entry<EwDescriptor, EditableWindow> ew = getEwEntry(doc, fromUri);
+        
+        try {
+            properties = doc.getProperties(SCHEMA);
+
+            Collection<Object> values = properties.values();
+
+            // Une seule liste dans ce schéma
+            Object liste = values.iterator().next();
+            String regionId = "";
+            AbstractEditableWindow specific = null;
+            
+            if (liste instanceof List) {
+                List<Map<String, Object>> listeEw = (List<Map<String, Object>>) liste;
+
+                // ================== Calcul des propriétés du schéma
+                // Génération d'une URI
+                newUri = Long.toString(new Date().getTime());
+
+                // Calcul du positionnement
+                // Par défaut en haut de la région (0)
+                
+                Integer order = new Integer(0);
+                // Si l'uri du fragment au dessus est précisé, récupération de
+                // la position et de la région du fragment
+//                if (belowUri != null) {
+                    for (Map<String, Object> window : listeEw) {
+                        if (fromUri.equals(window.get("uri"))) {
+                        	
+                            String orderStr = window.get("order").toString();
+                            order = Integer.parseInt(orderStr) + 1;
+                            regionId = window.get("regionId").toString();
+                            
+                            // ================== Copie de la nouvelle entrée au schéma
+                            Map<String, Object> newEntry = new HashMap<String, Object>();
+                            newEntry.putAll(window);
+                            newEntry.put("order",order.toString());
+                            newEntry.put("uri", newUri);
+
+
+                            listeEw.add(newEntry);
+                            break;
+                        }
+                    }
+//                }
+
+
+                // ================== Décalage des autres fragments de cette région
+                for (Map<String, Object> window : listeEw) {
+                    String regionCompare = window.get("regionId").toString();
+                    String orderCompare = window.get("order").toString();
+                    if (regionId.equals(regionCompare) && (Integer.parseInt(orderCompare) >= order)) {
+                        Integer newOrder = Integer.parseInt(orderCompare) + 1;
+                        window.put("order", newOrder.toString());
+                    }
+                }
+
+
+                doc.setProperties(SCHEMA, properties);
+                
+                EditableWindow value = ew.getValue();
+                if(value instanceof AbstractEditableWindow) {
+                	AbstractEditableWindow aew = (AbstractEditableWindow) value;
+                	aew.duplicate(doc, fromUri, newUri);
+                }
+                
+                
+				
+            }
+        } catch (ClientException e) {
+            throw new EwServiceException(e);
+        }
+
+
+        return newUri;
+    	
+    }
 
 }

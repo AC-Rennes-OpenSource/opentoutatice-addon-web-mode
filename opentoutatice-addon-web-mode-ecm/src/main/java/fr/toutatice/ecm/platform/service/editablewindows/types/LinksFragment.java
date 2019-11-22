@@ -18,6 +18,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +34,7 @@ import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
  * Service dédié aux listes
  * 
  */
-public class LinksFragment implements EditableWindow {
+public class LinksFragment extends AbstractEditableWindow {
 
 	private static final String LINKS_FRAG_SCHEMA1 = "links_fragments";
 	private static final String LINKS_SCHEMA = "links";
@@ -107,6 +108,15 @@ public class LinksFragment implements EditableWindow {
 			throw new EwServiceException(e);
 		}
 		return uri;
+	}
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(LINKS_SCHEMA);
+		specifcSchemas.add(LINKS_FRAG_SCHEMA1);
+		return specifcSchemas;
 	}
 
 }

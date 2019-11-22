@@ -20,6 +20,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +38,8 @@ import fr.toutatice.ecm.platform.service.fragments.helpers.CriteriaListBeanHelpe
  * @author david
  *
  */
-public class CriteriaListFragment implements EditableWindow {
+public class CriteriaListFragment extends AbstractEditableWindow {
+	List<String> specifcSchemas = new ArrayList<String>();
 
 	public static final String CRITERIA_LIST_SCHEMA = "criteria_list_fragments";
 	public static final String CRITERIA_LIST_XPATH = "crtlistfgt:criteriaListFragment";
@@ -96,6 +98,14 @@ public class CriteriaListFragment implements EditableWindow {
 	        spaceId = document.getId();
 	    }
 	    return spaceId;
+	}
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(CRITERIA_LIST_SCHEMA);
+		return specifcSchemas;
 	}
 
 }

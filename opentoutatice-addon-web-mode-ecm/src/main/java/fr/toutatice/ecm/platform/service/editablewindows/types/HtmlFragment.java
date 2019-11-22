@@ -18,6 +18,7 @@
  */
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +34,7 @@ import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
  * Service dédié aux fragments html
  *
  */
-public class HtmlFragment implements EditableWindow {
+public class HtmlFragment extends AbstractEditableWindow {
 
 	private static final String HTML_SCHEMA = "html_fragments";
 
@@ -68,6 +69,14 @@ public class HtmlFragment implements EditableWindow {
             throw new EwServiceException(e);
 		}
 		return uri;
+	}
+	
+	@Override
+	public List<String> getSpecifcSchemas() {
+		
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(HTML_SCHEMA);
+		return specifcSchemas;
 	}
 
 }

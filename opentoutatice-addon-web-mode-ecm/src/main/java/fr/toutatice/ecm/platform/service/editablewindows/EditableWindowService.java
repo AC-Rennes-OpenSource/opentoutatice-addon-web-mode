@@ -63,4 +63,9 @@ public interface EditableWindowService {
     public String prepareCreation(DocumentModel doc, EditableWindow specific, String fragmentCategory, String region, String belowUri, String code2)
             throws EwServiceException;
 
+    /**
+     * Duplicate a editable window
+     */
+	String duplicate(DocumentModel doc, String fromUri) throws EwServiceException;
+
 }

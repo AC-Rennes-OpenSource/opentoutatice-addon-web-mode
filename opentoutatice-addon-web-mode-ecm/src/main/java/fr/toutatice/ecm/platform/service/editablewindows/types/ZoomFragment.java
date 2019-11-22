@@ -1,5 +1,6 @@
 package fr.toutatice.ecm.platform.service.editablewindows.types;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,7 @@ import fr.toutatice.ecm.platform.service.editablewindows.EwServiceException;
  * Service dédié aux fragments zoom
  * 
  */
-public class ZoomFragment implements EditableWindow {
+public class ZoomFragment extends AbstractEditableWindow  {
 
     private static final String ZOOM_SCHEMA = "zoom_fragments";
     private static final String ZOOM_LINKS_SCHEMA = "zoom_links";
@@ -50,6 +51,14 @@ public class ZoomFragment implements EditableWindow {
             throw new EwServiceException(e);
 		}
 		return uri;
+	}
+
+	@Override
+	public List<String> getSpecifcSchemas() {
+		List<String> specifcSchemas = new ArrayList<String>();
+		specifcSchemas.add(ZOOM_SCHEMA);
+
+		return specifcSchemas;
 	}
 
 }

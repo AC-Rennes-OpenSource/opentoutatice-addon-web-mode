@@ -27,10 +27,10 @@ Nuxeo-Component: OSGI-INF/extensions/webpage/layouts-contrib.xml,
  OSGI-INF/extensions/editablewindows/toutatice-layouts-contrib.xml, 
  OSGI-INF/extensions/editablewindows/toutatice-themes-contrib.xml, 
  OSGI-INF/extensions/editablewindows/toutatice-widgets-contrib.xml, 
+ OSGI-INF/extensions/editablewindows/toutatice-automation-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-core-types-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-lifecycle-contrib.xml, 
  OSGI-INF/extensions/medialibrary/toutatice-filters-contrib.xml,
  OSGI-INF/extensions/medialibrary/toutatice-ui-types-contrib.xml,
  OSGI-INF/extensions/bo-ui/summary-view-contrib.xml
-
 
