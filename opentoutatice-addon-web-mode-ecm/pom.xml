@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>opentoutatice-web-mode-ecm</artifactId>
-  <version>4.2-SNAPSHOT</version>
+	
 	<packaging>jar</packaging>
 	<name>opentoutatice-web-mode-ecm</name>
 	<description>
