@@ -13,7 +13,7 @@
 	<properties>
 		<nuxeo.version>RAB-6.1.5</nuxeo.version>
 		<!--  <nuxeo.cap.version>RAB-6.1.5</nuxeo.cap.version>-->
-		<nuxeo.opentoutatice.version>RAB-4.7.44</nuxeo.opentoutatice.version>
+		<nuxeo.opentoutatice.version>RAB-4.7.45</nuxeo.opentoutatice.version>
 	</properties>
 
 	<modules>
