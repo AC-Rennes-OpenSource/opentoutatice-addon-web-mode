@@ -38,7 +38,7 @@
                                 <h:inputHidden id="targetPath" class="targetPath"
                                     value="#{zoom.href}" validator="#{fgtsValidator.validateExternelURLField}" />
                                 <input type="text" id="#{zoom.refURI}_targetTitle" class="targetTitle form-control"
-                                    value="#{fragmentBean.getTitleByPath(zoom.href)}" onblur="setManualPath(1);" required="false"/>
+                                    value="#{fragmentBean.getTitleByPath(zoom.href)}" onblur="setManualPath(1);" />
                                 <span class="input-group-btn"> <a href="#targetPath"
                                     id="delete_target" class="btn btn-default"
                                     onclick="removeTarget(1);"> <i
