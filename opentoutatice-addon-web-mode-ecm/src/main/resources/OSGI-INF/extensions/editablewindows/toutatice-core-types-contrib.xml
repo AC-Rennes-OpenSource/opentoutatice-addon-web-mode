@@ -12,6 +12,7 @@
 			<schema name="regions" />
 			<schema name="fragments" />
 			<schema name="html_fragments" />
+			<schema name="code_fragments" />
 			<schema name="zoom_fragments" />
 			<schema name="links" />
 			<schema name="links_fragments" />
@@ -31,6 +32,7 @@
 			<schema name="regions" />
 			<schema name="fragments" />
 			<schema name="html_fragments" />
+			<schema name="code_fragments" />
 			<schema name="zoom_fragments" />
 			<schema name="links" />
 			<schema name="links_fragments" />

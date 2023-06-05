@@ -11,6 +11,10 @@
 			class="fr.toutatice.ecm.platform.service.editablewindows.types.HtmlFragment"
 			title="osivia.fragment.html.title" layout="html_fragment_layout" />
 
+		<editablewindow code="fgt.code"
+						class="fr.toutatice.ecm.platform.service.editablewindows.types.CodeFragment"
+						title="osivia.fragment.code.title" layout="code_fragment_layout" />
+
 		<editablewindow code="fgt.zoom"
 			class="fr.toutatice.ecm.platform.service.editablewindows.types.ZoomFragment"
 			title="osivia.fragment.zoom.title" layout="zoom_fragment_layout" />
