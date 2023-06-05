@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<description>Addon CMS for websites</description>
 	<name>opentoutatice-web-mode-parent</name>
-	<version>RAB-4.7.20-SNAPSHOT</version>
+	<version>RAB-4.7.20</version>
 
 	<properties>
 		<nuxeo.version>RAB-6.1.5</nuxeo.version>
