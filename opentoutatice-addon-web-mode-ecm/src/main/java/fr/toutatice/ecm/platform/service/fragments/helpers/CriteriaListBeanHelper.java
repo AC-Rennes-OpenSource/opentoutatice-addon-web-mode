@@ -67,8 +67,11 @@ public class CriteriaListBeanHelper implements Serializable {
     }
 
     public enum DocType {
-        Article("Annonce", "osivia.fragment.criteria.list.doctype.article.title"), File("File", "osivia.fragment.criteria.list.doctype.file.title"), Link(
-                "ContextualLink", "osivia.fragment.criteria.list.doctype.link.title");
+        Page("PortalPage", "osivia.fragment.criteria.list.doctype.page.title"), 
+        Article("Annonce", "osivia.fragment.criteria.list.doctype.article.title"), 
+        File("File", "osivia.fragment.criteria.list.doctype.file.title"), 
+        Link("ContextualLink", "osivia.fragment.criteria.list.doctype.link.title");
+
 
         private String nxType;
         private String label;
@@ -88,8 +91,9 @@ public class CriteriaListBeanHelper implements Serializable {
     }
 
     public enum Order {
-        publicationDate("dc:issued desc", "osivia.fragment.criteria.list.order.publication.title"), alphabetic("dc:title asc",
-                "osivia.fragment.criteria.list.order.alphabetic.title");
+        publicationDate("dc:issued desc", "osivia.fragment.criteria.list.order.publication.title"), 
+        alphabetic("dc:title asc", "osivia.fragment.criteria.list.order.alphabetic.title"),
+        natural("ecm:pos asc", "osivia.fragment.criteria.list.order.natural.title");
 
         private String nxProperty;
         private String label;

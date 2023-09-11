@@ -66,7 +66,6 @@ public class CriteriaListFragment extends AbstractEditableWindow {
 
 				// Criteria request
 				Map<String, String> criteriaRequest = new HashMap<String, String>(3);
-				//criteriaRequest.put("docTypes", CriteriaListBeanHelper.DocType.All.type());
 				criteriaRequest.put("order", CriteriaListBeanHelper.Order.publicationDate.value());
 				criteriaRequest.put("searchArea", CriteriaListBeanHelper.SearchArea.currentPage.value());
 				criteriaRequest.put("currentDocId", document.getId());
