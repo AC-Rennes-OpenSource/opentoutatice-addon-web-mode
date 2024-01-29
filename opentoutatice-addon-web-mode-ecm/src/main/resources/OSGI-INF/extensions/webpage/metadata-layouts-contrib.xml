@@ -41,7 +41,10 @@
 				</row>
 				<row>
 					<widget>osivia_widget_picture</widget>
-				</row>				
+				</row>
+				<row>
+					<widget>osivia_widget_mobilepicture</widget>
+				</row>
 				<row>
 					<widget>osivia_widget_abstract</widget>
 				</row>

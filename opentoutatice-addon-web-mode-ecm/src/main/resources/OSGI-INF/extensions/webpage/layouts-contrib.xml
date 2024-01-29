@@ -101,6 +101,25 @@
 				</mode>
 			</widgetModes>
 		</widget>
+
+		<widget name="osivia_widget_mobilepicture" type="file">
+			<labels>
+				<label mode="any">osivia.document.mobilepicture</label>
+			</labels>
+			<helpLabels>
+				<label mode="any">osivia.document.mobilepicture.help</label>
+			</helpLabels>
+			<translated>true</translated>
+			<fields>
+				<field>ttcn:mobilePicture</field>
+				<field>ttcn:mobilePicture/filename</field>
+			</fields>
+			<widgetModes>
+				<mode value="any">#{nxu:test(config.getWebsiteParam("enableMobilePicture"), layout.mode,
+					'hidden')}
+				</mode>
+			</widgetModes>
+		</widget>
 		
 		<widget name="osivia_widget_thumbnail" type="file">
 			<labels>
